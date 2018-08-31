@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Michael V. DePalatis">
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Using websockets with Flask via Tornado - mike.depalatis.net</title>
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/color-brewer.min.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="../index.html">mike.depalatis.net</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="../index.html">About</a>
+                            </li>
+                            <li >
+                                <a href="../resources.html">Resources</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../archives.html">Archives</a>
+</li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">2018</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="conda-kernels.html">Jupyter integration with conda environments</a>
+</li>
+            
+<li >
+    <a href="multiline-lambdas.html">Multiline lambdas</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">2017</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="ipc-with-sqlite.html">Sharing data between processes with SQLite</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">2016</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="lmfit.html">Fitting with lmfit</a>
+</li>
+            
+<li >
+    <a href="matplotlib-color-cycle.html">Getting Matplotlib's colors in order</a>
+</li>
+            
+<li >
+    <a href="postgres-time-series-database.html">Using Postgres as a time series database</a>
+</li>
+            
+<li >
+    <a href="simplifying-argparse.html">Simplifying argparse usage with subcommands</a>
+</li>
+            
+<li >
+    <a href="javascript-for-python-programmers.html">Javascript for Python programmers</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">2015</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="blocking-code-to-tornado-coroutine.html">Running (possibly) blocking code like a Tornado coroutine</a>
+</li>
+            
+<li >
+    <a href="tornado-background-tasks.html">Background tasks with Tornado</a>
+</li>
+            
+<li >
+    <a href="flask-sse-demo.html">Flask and server-sent events</a>
+</li>
+            
+<li >
+    <a href="hg-import-from-another-repo.html">Importing one Mercurial repository into another</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">2014</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="rpi-usb-ethernet-gateway.html">Raspberry Pi as a USB to Ethernet Gateway</a>
+</li>
+            
+<li >
+    <a href="sudo-ssh-auth.html">ssh-agent for sudo authentication with a passwordless account</a>
+</li>
+            
+<li class="active">
+    <a href="flask-websockets-with-tornado.html">Using websockets with Flask via Tornado</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li >
+                                <a rel="next" href="sudo-ssh-auth.html">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="disabled">
+                                <a rel="prev" >
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+    <div class="col-md-12" role="main">
+
+
+<h1>Using websockets with Flask via Tornado</h1>
+
+<p>I've been working on some projects for the lab that involve remotely
+controlling hardware to perform various tasks. Since the hardware in
+question is shared between different experiments, some sort of
+asynchronous solution is needed, and a web-based client coupled with
+<a href="https://en.wikipedia.org/wiki/WebSocket">websockets</a> seemed to be the best bet (this also leaves the option
+open in the future to write a standalone client that is not
+browser-based if desired).</p>
+<p>There is no shortage of web frameworks for Python. Some of the more
+popular ones are <a href="https://www.djangoproject.com/">Django</a>, <a href="http://flask.pocoo.org/">Flask</a>, <a href="http://tornadoweb.org/">Tornado</a>, and
+<a href="http://www.pylonsproject.org/">Pyramid</a>. Of these, I greatly prefer Flask for a number of reasons:</p>
+<ul>
+<li>Very thorough and easy to read documentation, including "snippets"
+  with helpful tips and a very helpful community.</li>
+<li>Extreme ease of use for both small and large projects.</li>
+<li>Great use of decorators to further ease development.</li>
+<li>A large number of extensions to build up a complex project without
+  requiring overhead for simple projects.</li>
+</ul>
+<p>This is not to say that the other options are bad, but having looked
+at all of them, Flask suits me best. The one problem: only Tornado
+directly supports websockets since it is both an HTTP server and a web
+framework in one, whereas the others utilize <a href="https://en.wikipedia.org/wiki/Web_Server_Gateway_Interface">WSGI</a> for deployment.</p>
+<p>Luckily, it is possible to leverage both the excellent asynchronous
+features of Tornado and the power and ease of use of Flask through
+Tornado's ability to serve WSGI apps with
+<code>tornado.wsgi.WSGIContainer</code>. The Flask documentation shows a very
+simple
+<a href="http://flask.pocoo.org/docs/0.10/deploying/wsgi-standalone/#tornado">example</a>
+on how to do just that.</p>
+<p>Integrating websockets into a Flask app is now pretty easy. Here's an
+example on the server side:</p>
+<pre><code class="python">from __future__ import print_function
+from flask import Flask, render_template
+from tornado.wsgi import WSGIContainer
+from tornado.web import Application, FallbackHandler
+from tornado.websocket import WebSocketHandler
+from tornado.ioloop import IOLoop
+
+class WebSocket(WebSocketHandler):
+    def open(self):
+        print(&quot;Socket opened.&quot;)
+
+    def on_message(self, message):
+        self.write_message(&quot;Received: &quot; + message)
+        print(&quot;Received message: &quot; + message)
+
+def on_close(self):
+    print(&quot;Socket closed.&quot;)
+
+app = Flask('flasknado')
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+if __name__ == &quot;__main__&quot;:
+    container = WSGIContainer(app)
+    server = Application([
+        (r'/websocket/', WebSocket),
+        (r'.*', FallbackHandler, dict(fallback=container))
+    ])
+    server.listen(8080)
+    IOLoop.instance().start()
+</code></pre>
+
+<p>The client-side Javascript is simple as well:</p>
+<pre><code class="javascript">var socket = null;
+$(document).ready(function() {
+    socket = new WebSocket(&quot;ws://&quot; + document.domain + &quot;:8080/websocket/&quot;);
+
+    socket.onopen = function() {
+        socket.send(&quot;Joined&quot;);
+    }
+
+    socket.onmessage = function(message) {
+        var txt = message.data;
+        $(&quot;.container&quot;).append(&quot;&lt;p&gt;&quot; + txt + &quot;&lt;/p&gt;&quot;);
+    }
+});
+
+function submit() {
+    var text = $(&quot;input#message&quot;).val();
+    socket.send(text);
+    $(&quot;input#message&quot;).val('');
+}
+</code></pre>
+
+<p>The full demo example can be found
+<a href="https://github.com/mivade/flasknado">here</a>.</p>
+<h2 id="additional-notes">Additional notes</h2>
+<p>There already exist at least two extensions for Flask to use
+websockets:</p>
+<ul>
+<li><a href="https://github.com/kennethreitz/flask-sockets">Flask-Sockets</a></li>
+<li><a href="https://github.com/miguelgrinberg/Flask-SocketIO">Flask-SocketIO</a></li>
+</ul>
+<p>However, both of these are based on
+<a href="http://gevent.org/">gevent</a>. While gevent is nice, it still has
+limited Python 3 support and does not work on Windows (sadly, a
+requirement for some hardware drivers).</p></div>
+
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

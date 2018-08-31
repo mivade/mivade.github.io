@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Michael V. DePalatis">
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Importing one Mercurial repository into another - mike.depalatis.net</title>
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/color-brewer.min.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="../index.html">mike.depalatis.net</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="../index.html">About</a>
+                            </li>
+                            <li >
+                                <a href="../resources.html">Resources</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../archives.html">Archives</a>
+</li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">2018</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="conda-kernels.html">Jupyter integration with conda environments</a>
+</li>
+            
+<li >
+    <a href="multiline-lambdas.html">Multiline lambdas</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">2017</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="ipc-with-sqlite.html">Sharing data between processes with SQLite</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">2016</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="lmfit.html">Fitting with lmfit</a>
+</li>
+            
+<li >
+    <a href="matplotlib-color-cycle.html">Getting Matplotlib's colors in order</a>
+</li>
+            
+<li >
+    <a href="postgres-time-series-database.html">Using Postgres as a time series database</a>
+</li>
+            
+<li >
+    <a href="simplifying-argparse.html">Simplifying argparse usage with subcommands</a>
+</li>
+            
+<li >
+    <a href="javascript-for-python-programmers.html">Javascript for Python programmers</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">2015</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="blocking-code-to-tornado-coroutine.html">Running (possibly) blocking code like a Tornado coroutine</a>
+</li>
+            
+<li >
+    <a href="tornado-background-tasks.html">Background tasks with Tornado</a>
+</li>
+            
+<li >
+    <a href="flask-sse-demo.html">Flask and server-sent events</a>
+</li>
+            
+<li class="active">
+    <a href="hg-import-from-another-repo.html">Importing one Mercurial repository into another</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">2014</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="rpi-usb-ethernet-gateway.html">Raspberry Pi as a USB to Ethernet Gateway</a>
+</li>
+            
+<li >
+    <a href="sudo-ssh-auth.html">ssh-agent for sudo authentication with a passwordless account</a>
+</li>
+            
+<li >
+    <a href="flask-websockets-with-tornado.html">Using websockets with Flask via Tornado</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li >
+                                <a rel="next" href="flask-sse-demo.html">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li >
+                                <a rel="prev" href="rpi-usb-ethernet-gateway.html">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+    <div class="col-md-12" role="main">
+
+
+<h1>Importing one Mercurial repository into another</h1>
+
+<p>In the
+<a href="http://phys.au.dk/forskning/forskningsomraader/amo/the-ion-trap-group/">ion trap group</a>,
+we usually use <a href="https://www.mercurial-scm.org/">Mercurial</a> for version controlling software we write
+for experimental control, data analysis, and so on. This post outlines
+how to import the full history of one repository into another. This
+can be useful for cases where it makes sense to move a sub-project
+directly into its parent, for example.</p>
+<h2 id="convert-the-soon-to-be-child-repository">Convert the soon-to-be child repository</h2>
+<p>With the Mercurial <code>convert</code> extension, you can rename branches, move,
+and filter files. As an example, say we have a repo with only the
+<code>default</code> branch which is to be imported into a super-repository.</p>
+<p>For starters, we will want all our files in the child repo to be in a
+subdirectory of the parent repo and not include the child's
+<code>.hgignore</code>. To do this, create a file <code>filemap.txt</code> with the
+following contents:</p>
+<pre><code>rename . child
+exclude .hgignore
+</code></pre>
+
+<p>The first line will move all files in the repo's top level into a
+directory named <code>child</code>.</p>
+<p>Next, optionally create a <code>branchmap.txt</code> file for renaming the
+<code>default</code> branch to something else:</p>
+<pre><code>default child-repo
+</code></pre>
+
+<p>Now convert:</p>
+<pre><code>hg convert --filemap branchmap.txt --branchmap branchmap.txt child/ converted/
+</code></pre>
+
+<h2 id="pull-in-the-converted-repository">Pull in the converted repository</h2>
+<p>From the parent repo:</p>
+<pre><code>hg pull -f ../converted
+</code></pre>
+
+<p>Ensure the child commits are in the draft phase with:</p>
+<pre><code>hg phase -f --draft -r &lt;first&gt;:&lt;last&gt;
+</code></pre>
+
+<h2 id="rebase-as-appropriate">Rebase as appropriate</h2>
+<pre><code>hg rebase -s &lt;child rev&gt; -d &lt;parent rev&gt;
+</code></pre>
+
+<p>To keep the child's changed branch name, use the <code>--keepbranches</code>
+option.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>https://mercurial.selenic.com/wiki/ConvertExtension</li>
+<li>https://mercurial.selenic.com/wiki/Phases</li>
+<li>https://mercurial.selenic.com/wiki/RebaseExtension</li>
+<li>https://stackoverflow.com/questions/3214717/how-can-i-import-a-mercurial-repo-including-history-into-another-mercurial-rep</li>
+<li>https://stackoverflow.com/questions/3338672/mercurial-convert-clones-to-branches</li>
+</ul></div>
+
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
