@@ -8,7 +8,7 @@
         <meta name="author" content="Michael V. DePalatis">
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Simplifying argparse usage with subcommands - mike.depalatis.net</title>
+        <title>Useful BASH shortcuts for conda - mike.depalatis.net</title>
         <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
@@ -68,7 +68,7 @@
     <a href="conda-kernels.html">Jupyter integration with conda environments</a>
 </li>
             
-<li >
+<li class="active">
     <a href="conda-shortcuts.html">Useful BASH shortcuts for conda</a>
 </li>
             
@@ -104,7 +104,7 @@
     <a href="postgres-time-series-database.html">Using Postgres as a time series database</a>
 </li>
             
-<li class="active">
+<li >
     <a href="simplifying-argparse.html">Simplifying argparse usage with subcommands</a>
 </li>
             
@@ -164,12 +164,12 @@
                             </a>
                         </li>
                             <li >
-                                <a rel="next" href="postgres-time-series-database.html">
+                                <a rel="next" href="conda-kernels.html">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li >
-                                <a rel="prev" href="javascript-for-python-programmers.html">
+                                <a rel="prev" href="multiline-lambdas.html">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -182,96 +182,48 @@
     <div class="col-md-12" role="main">
 
 
-<h1>Simplifying argparse usage with subcommands</h1>
+<h1>Useful BASH shortcuts for conda</h1>
 
-<p>One of the best things about Python is its standard library: it's
-frequently possible to create complex applications while requiring few
-(if any) external dependencies. For example, command line interfaces
-can be easily built with the <code>argparse</code> module. Despite this, there
-exist several alternative, third-party modules (e.g., <a href="http://docopt.org/">docopt</a>,
-<a href="http://click.pocoo.org/">click</a>, and <a href="http://begins.readthedocs.io/en/latest/">begins</a>). These all tend to share similar
-motivations: while <code>argparse</code> is powerful, it is by inherently verbose
-and is therefore cumbersome to use for more complex CLIs which use
-advanced features such as subcommands. Nevertheless, I tend to prefer
-sticking with <code>argparse</code> in part because I am already familiar with
-the API and because using it means I don't need to bring in another
-dependency from PyPI just to add a small bit of extra
-functionality. The good news is that with a simple decorator and a
-convenience function, writing CLIs with subcommands in <code>argparse</code> is
-pretty trivial and clean.</p>
-<p>Start by creating a parser and subparsers in <code>cli.py</code>:</p>
-<pre><code class="py">from argparse import ArgumentParser
-
-cli = ArgumentParser()
-subparsers = cli.add_subparsers(dest=&quot;subcommand&quot;)
+<p>Anaconda's <a href="https://conda.io/docs/">conda</a> has become the de facto environment
+management tool in Python-oriented scientific computing. Its lightweight
+environments are suitable for development and, at least in some cases,
+deployment. In general, for each new project, I like to create a new
+environment. Creating a new, mostly empty environment is done with the following
+command:</p>
+<pre><code class="bash">$ conda env create -y -n my-project-name
 </code></pre>
 
-<p>Note that we are storing the name of the called subcommand so that we
-can later print help if either no subcommand is given or if an
-unrecognized one is. Now we can define a decorator to turn a function
-into a subcommand:</p>
-<pre><code class="py">def subcommand(args=[], parent=subparsers):
-    def decorator(func):
-        parser = parent.add_parser(func.__name__, description=func.__doc__)
-        for arg in args:
-            parser.add_argument(*arg[0], **arg[1])
-        parser.set_defaults(func=func)
-    return decorator
+<p>Then the new environment must be activated with</p>
+<pre><code class="bash">$ conda activate my-project-name
 </code></pre>
 
-<p>What this does is take the wrapped function and use its name and
-docstring for the subcommand name and help string, respectively. Next
-it automatically adds arguments for the subcommand from a list passed
-to the decorator. In order to dispatch the command later, the usual
-<code>parser.set_defaults</code> method is used to store the function itself in
-the <code>func</code> variable.</p>
-<p>In the simplest case, we can create a subcommand which requires no
-arguments as follows:</p>
-<pre><code class="py">@subcommand()
-def nothing(args):
-    print(&quot;Nothing special!&quot;)
+<p>If I later want to remove the environment:</p>
+<pre><code class="bash">$ conda env remove -y -n my-project-name
 </code></pre>
 
-<p>Meanwhile, in our main function, we dispatch the subcommand as follows:</p>
-<pre><code class="py">if __name__ == &quot;__main__&quot;:
-    args = cli.parse_args()
-    if args.subcommand is None:
-        cli.print_help()
-    else:
-        args.func(args)
+<p>This can get tiresome, so I have the following functions defined in my
+<code>.bashrc</code>:</p>
+<pre><code class="bash">function conact() {
+    conda activate $(basename $(pwd))
+}
+
+function cenv() {
+    if [ -f environment.yaml ]; then
+    conda env create --file=environment.yaml -n $(basename $(pwd))
+    else
+    conda create -yn $(basename $(pwd))
+    fi
+}
+
+function rmcenv() {
+    conda remove -n $(basename $(pwd)) --all
+}
 </code></pre>
 
-<p>Now running <code>python cli.py nothing</code> will run the <code>nothing</code> function
-and simply print <code>Nothing special!</code> to stdout.</p>
-<p>More often, subcommands require their own set of options. In the
-definition of the <code>subcommand</code> decorator above, these options can be
-given as a list of length-2 lists that contain the <a href="https://docs.python.org/3/library/argparse.html#the-add-argument-method">name or flags</a>
-for the argument and all keyword arguments used by
-<code>ArgumentParser.add_argument</code>. This is a bit cumbersome as is, so it's
-useful to define a small helper function that takes arguments just
-like <code>ArgumentParser.add_argument</code>:</p>
-<pre><code class="py">def argument(*name_or_flags, **kwargs):
-    return ([*name_or_flags], kwargs)
-</code></pre>
-
-<p>Now we can define commands with arguments like so:</p>
-<pre><code class="py">@subcommand([argument(&quot;-d&quot;, help=&quot;Debug mode&quot;, action=&quot;store_true&quot;)])
-def test(args):
-    print(args)
-
-
-@subcommand([argument(&quot;-f&quot;, &quot;--filename&quot;, help=&quot;A thing with a filename&quot;)])
-def filename(args):
-    print(args.filename)
-
-
-@subcommand([argument(&quot;name&quot;, help=&quot;Name&quot;)])
-def name(args):
-    print(args.name)
-</code></pre>
-
-<p>That's all there is to it! Quite a bit better than <a href="https://docs.python.org/3/library/argparse.html#sub-commands">the default way</a>
-to build a CLI with subcommands. The full example can be found <a href="https://gist.github.com/mivade/384c2c41c3a29c637cb6c603d4197f9f">here</a>.</p></div>
+<p>Now when starting a new project, I need only type</p>
+<pre><code>$ cenv
+$ conact
+</code></pre></div>
 
         </div>
 
