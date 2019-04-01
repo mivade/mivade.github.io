@@ -1,0 +1,56 @@
+==================================================================
+https://keybase.io/mivade
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://mike.depalatis.net
+  * I am mivade (https://keybase.io/mivade) on keybase.
+  * I have a public key ASA-2PGXI0NBOa82IA2mLsvYz05uPEcwMDIVCWT-OL_ougo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0120a389f6e08d234657fe05e467ba26d25904718c3698b89a262f3036d951b0f5170a",
+      "host": "keybase.io",
+      "kid": "01203ed8f19723434139af36200da62ecbd8cf4e6e3c47303032150964fe38bfe8ba0a",
+      "uid": "7959aeb9ecb32324dabf3720a5e5a119",
+      "username": "mivade"
+    },
+    "merkle_root": {
+      "ctime": 1554132234,
+      "hash": "176775864219527c092d3ccd346a446b470efd7f0bb629e0d2b651ecc7b1cc948a1349b35eb23dc0dabaa6251d863905994d49ed01e263fb8175fb4f30c1d943",
+      "hash_meta": "6edd0862476449d03ffc29c57fc7d7f2930898f0acee2f64f4db21fd2885af95",
+      "seqno": 5072198
+    },
+    "service": {
+      "entropy": "rDbzQjKZcklLEqHllEm4xKfX",
+      "hostname": "mike.depalatis.net",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "3.1.2"
+  },
+  "ctime": 1554132241,
+  "expire_in": 504576000,
+  "prev": "df42f632af4349842efcee19d356db25a6ffb765f82a6adf2899262bd88b0325",
+  "seqno": 32,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgPtjxlyNDQTmvNiANpi7L2M9ObjxHMDAyFQlk/ji/6LoKp3BheWxvYWTESpcCIMQg30L2Mq9DSYQu/O4Z01bbJab/t2X4KmrfKJkmK9iLAyXEIOOisMYE04uMBMM+1pBhAtyDN9FWrTb02jpgoyLCGKkIAgHCo3NpZ8RAvYN7T5GE2eRF9MxT7HtIi8ivOTaaO7rxaeS/I0nSu1sBS17KRXLefxV8a/5BzuCEWnud8L9hE+LSiJ9FgthlA6hzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEILGe4EZ4DwNhGE74SBO2XV8RqnFnu0fqbutZEuZZ35Wio3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/mivade
+
+==================================================================
