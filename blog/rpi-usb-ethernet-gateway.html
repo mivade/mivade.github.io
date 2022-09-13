@@ -1,200 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-        <meta name="author" content="Michael V. DePalatis">
-        
-        <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Raspberry Pi as a USB to Ethernet Gateway - mike.depalatis.net</title>
-        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
-        <link href="../css/font-awesome.min.css" rel="stylesheet">
-        <link href="../css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/color-brewer.min.css">
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
-
-        <script src="../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../js/bootstrap-3.0.3.min.js" defer></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-        <script>hljs.initHighlightingOnLoad();</script> 
-    </head>
-
-    <body>
-
-        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-            <div class="container">
-
-                <!-- Collapsed navigation -->
-                <div class="navbar-header">
-                    <!-- Expander button -->
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="../index.html">mike.depalatis.net</a>
-                </div>
-
-                <!-- Expanded navigation -->
-                <div class="navbar-collapse collapse">
-                        <!-- Main navigation -->
-                        <ul class="nav navbar-nav">
-                            <li >
-                                <a href="../index.html">About</a>
-                            </li>
-                            <li >
-                                <a href="../resources.html">Resources</a>
-                            </li>
-                            <li class="dropdown active">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    
-<li >
-    <a href="../archives.html">Archives</a>
-</li>
-                                    
-  <li class="dropdown-submenu">
-    <a href="#">2019</a>
-    <ul class="dropdown-menu">
-            
-<li >
-    <a href="sqlalchemy-timestamps.html">Ensuring timestamp storage in UTC with SQLAlchemy</a>
-</li>
-    </ul>
-  </li>
-                                    
-  <li class="dropdown-submenu">
-    <a href="#">2018</a>
-    <ul class="dropdown-menu">
-            
-<li >
-    <a href="conda-kernels.html">Jupyter integration with conda environments</a>
-</li>
-            
-<li >
-    <a href="conda-shortcuts.html">Useful BASH shortcuts for conda</a>
-</li>
-            
-<li >
-    <a href="multiline-lambdas.html">Multiline lambdas</a>
-</li>
-    </ul>
-  </li>
-                                    
-  <li class="dropdown-submenu">
-    <a href="#">2017</a>
-    <ul class="dropdown-menu">
-            
-<li >
-    <a href="ipc-with-sqlite.html">Sharing data between processes with SQLite</a>
-</li>
-    </ul>
-  </li>
-                                    
-  <li class="dropdown-submenu">
-    <a href="#">2016</a>
-    <ul class="dropdown-menu">
-            
-<li >
-    <a href="lmfit.html">Fitting with lmfit</a>
-</li>
-            
-<li >
-    <a href="matplotlib-color-cycle.html">Getting Matplotlib's colors in order</a>
-</li>
-            
-<li >
-    <a href="postgres-time-series-database.html">Using Postgres as a time series database</a>
-</li>
-            
-<li >
-    <a href="simplifying-argparse.html">Simplifying argparse usage with subcommands</a>
-</li>
-            
-<li >
-    <a href="javascript-for-python-programmers.html">Javascript for Python programmers</a>
-</li>
-    </ul>
-  </li>
-                                    
-  <li class="dropdown-submenu">
-    <a href="#">2015</a>
-    <ul class="dropdown-menu">
-            
-<li >
-    <a href="blocking-code-to-tornado-coroutine.html">Running (possibly) blocking code like a Tornado coroutine</a>
-</li>
-            
-<li >
-    <a href="tornado-background-tasks.html">Background tasks with Tornado</a>
-</li>
-            
-<li >
-    <a href="flask-sse-demo.html">Flask and server-sent events</a>
-</li>
-            
-<li >
-    <a href="hg-import-from-another-repo.html">Importing one Mercurial repository into another</a>
-</li>
-    </ul>
-  </li>
-                                    
-  <li class="dropdown-submenu">
-    <a href="#">2014</a>
-    <ul class="dropdown-menu">
-            
-<li class="active">
-    <a href="rpi-usb-ethernet-gateway.html">Raspberry Pi as a USB to Ethernet Gateway</a>
-</li>
-            
-<li >
-    <a href="sudo-ssh-auth.html">ssh-agent for sudo authentication with a passwordless account</a>
-</li>
-            
-<li >
-    <a href="flask-websockets-with-tornado.html">Using websockets with Flask via Tornado</a>
-</li>
-    </ul>
-  </li>
-                                </ul>
-                            </li>
-                        </ul>
-
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
-                                <i class="fa fa-search"></i> Search
-                            </a>
-                        </li>
-                            <li >
-                                <a rel="next" href="hg-import-from-another-repo.html">
-                                    <i class="fa fa-arrow-left"></i> Previous
-                                </a>
-                            </li>
-                            <li >
-                                <a rel="prev" href="sudo-ssh-auth.html">
-                                    Next <i class="fa fa-arrow-right"></i>
-                                </a>
-                            </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
-    <div class="col-md-12" role="main">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raspberry Pi as a USB to Ethernet Gateway - mike.depalatis.net</title>
+<link rel="stylesheet" href="/css/inter.css">
+<link rel="stylesheet" href="/css/new.css">
+<link rel="stylesheet" href="/css/codehilite.css">
+</head>
+<body>
+<header>
+<h1>mike.depalatis.net</h1>
+<nav>
+<a href="/index.html">Home</a>
+/
+<a href="/blog/index.html">Articles</a>
+/
+<a href="/resources.html">Resources</a>
+</nav>
+</header>
 
 
 <h1>Raspberry Pi as a USB to Ethernet Gateway</h1>
-
-<h2 id="introduction">Introduction</h2>
+<h2>Introduction</h2>
 <p>One of the most convenient ways of communicating with experimental
 devices (such as oscilloscopes, frequency generators, pulse
 generators, etc.) is via ethernet. The advantages of this over other
@@ -218,29 +46,29 @@ with the versatile <code>socat</code> command, can thus allow for transparent
 communications over ethernet with a USBTMC device as if it were
 connected via ethernet itself. The rest of this note describes the
 process for using a Raspberry Pi as a USBTMC to ethernet adapter.</p>
-<h2 id="compiling-the-rpi-kernel">Compiling the RPi kernel</h2>
+<h2>Compiling the RPi kernel</h2>
 <p>The RPi's default kernel does not include USBTMC support as a module
 or built into the kernel. This requires building from scratch, the
 full details of which can be found <a href="http://elinux.org/RPi_Kernel_Compilation">here</a>. The basic idea
 is to grab the RPi kernel source on a fast computer and cross compile
-it with the USBTMC kernel module[^1] (or build into the kernel if
+it with the USBTMC kernel module<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> (or build into the kernel if
 you prefer).</p>
 <p>There are a few caveats and pitfalls, so the following provides the
 step-by-step approach that worked for me. To get started on a 64-bit
 Linux machine, make sure you have the 32-bit libraries
 installed. <a href="https://groups.google.com/d/msg/comp.sys.raspberry-pi/ONzkoIV9ab8/E4wejOI51WwJ">On Debian and derivatives</a>:</p>
-<pre><code>sudo  dpkg  --add-architecture  i386 # enable multi-arch
+<div class="codehilite"><pre><span></span><code>sudo  dpkg  --add-architecture  i386 # enable multi-arch
 sudo  apt-get  update
 sudo  apt-get  install  ia32-libs
-</code></pre>
+</code></pre></div>
 
 <p>Once this is done, the following steps will get things working:</p>
-<h3 id="get-the-rpi-kernel-source">Get the RPi kernel source:</h3>
-<pre><code>git init
+<h3>Get the RPi kernel source:</h3>
+<div class="codehilite"><pre><span></span><code>git init
 git clone --depth 1 git://github.com/raspberrypi/linux.git
-</code></pre>
+</code></pre></div>
 
-<h3 id="get-the-compiler-for-cross-compiling">Get the compiler for cross-compiling:</h3>
+<h3>Get the compiler for cross-compiling:</h3>
 <p><code>git clone git://github.com/raspberrypi/tools.git</code></p>
 <ul>
 <li>Compile the kernel</li>
@@ -265,7 +93,7 @@ the configuration file, then exit. Now build the kernel:</p>
 N = 5). This step will take several minutes on a reasonably fast
 computer. Next build the modules:</p>
 <p><code>make ARCH=arm CROSS_COMPILE=${CCPREFIX} modules</code></p>
-<h3 id="transferring-the-kernel">Transferring the kernel:</h3>
+<h3>Transferring the kernel:</h3>
 <p>First copy to the RPi:</p>
 <p><code>scp arch/arm/boot/Image pi@yourpi:kernel_someuniqueid.img</code></p>
 <p>Then on the RPi, copy this over to <code>/boot</code>:</p>
@@ -274,12 +102,12 @@ computer. Next build the modules:</p>
 sure the following line appears:</p>
 <p><code>kernel=kernel_someuniqueid.img</code></p>
 <p>and comment out any other <code>kernel=...</code> lines.</p>
-<h3 id="transferring-the-kernel-modules">Transferring the kernel modules:</h3>
+<h3>Transferring the kernel modules:</h3>
 <p>On the build machine, make a temporary directory to install modules
 to:</p>
-<pre><code>mkdir ~/modules
-export MODULES_TEMP=~/modules
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="n">mkdir</span><span class="w"> </span><span class="o">~/</span><span class="n">modules</span><span class="w"></span>
+<span class="k">export</span><span class="w"> </span><span class="n">MODULES_TEMP</span><span class="o">=~/</span><span class="n">modules</span><span class="w"></span>
+</code></pre></div>
 
 <p>In the build directory:</p>
 <p><code>make ARCH=arm CROSS_COMPILE=${CCPREFIX}
@@ -292,107 +120,37 @@ out of space on the RPi SD card!). Transfer these over to the RPi:</p>
 <p><code>sudo cp -f lib/* /lib</code></p>
 <p><em>Only do this step while running a different version of the kernel
  than what you compiled!</em></p>
-<h3 id="reboot">Reboot.</h3>
-<h3 id="load-the-module">Load the module:</h3>
+<h3>Reboot.</h3>
+<h3>Load the module:</h3>
 <p><code>sudo modprobe usbtmc</code></p>
-<h3 id="connect-the-usb-device">Connect the USB device.</h3>
+<h3>Connect the USB device.</h3>
 <p>There should now be a device named <code>/dev/usbtmc0</code>.</p>
-<h2 id="talking-to-the-device">Talking to the device</h2>
+<h2>Talking to the device</h2>
 <p>A Python script for piping data to and from a USBTMC device can be
 found <a href="https://gist.github.com/mivade/112ef2087238662441ab">here</a>. It
 should be run through <code>socat</code> which does the more difficult work of
 properly transferring packets. The <code>socat</code> command I use is</p>
-<pre><code>socat tcp-listen:5025,fork,reuseaddr,crnl,tcpwrap=script\
-    EXEC:&quot;python usbtmc_pipe.py&quot;,su-d=pi,pty,echo=0
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="nv">socat</span><span class="w"> </span><span class="nv">tcp</span><span class="o">-</span><span class="nv">listen</span>:<span class="mi">5025</span>,<span class="nv">fork</span>,<span class="nv">reuseaddr</span>,<span class="nv">crnl</span>,<span class="nv">tcpwrap</span><span class="o">=</span><span class="nv">script</span>\<span class="w"></span>
+<span class="w">    </span><span class="k">EXEC</span>:<span class="s2">&quot;python usbtmc_pipe.py&quot;</span>,<span class="nv">su</span><span class="o">-</span><span class="nv">d</span><span class="o">=</span><span class="nv">pi</span>,<span class="nv">pty</span>,<span class="nv">echo</span><span class="o">=</span><span class="mi">0</span><span class="w"></span>
+</code></pre></div>
 
-<h2 id="other-notes">Other notes</h2>
+<h2>Other notes</h2>
 <p>It turns out that it is not necessary to use the kernel module to talk
 to USBTMC devices. A <a href="http://alexforencich.com/wiki/en/python-usbtmc/start">pure Python</a> implementation of using the
 USBTMC protocol also exists. This has the advantage of not requiring a
 custom kernel for the RPi, but it adds the slight complexity of
 needing to specify vendor and product IDs.</p>
-<h3 id="footnotes">Footnotes</h3>
-<p>[^1]: In the <code>make menuconfig</code> configuration menus, the option can be
-      found under <code>Device Drivers &gt; USB support &gt; USB Test and
-      Measurement Class support</code>.</p></div>
-
-        </div>
-
-        <footer class="col-md-12">
-            <hr>
-            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
-        </footer>
-        <script>
-            var base_url = "..",
-                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
-        </script>
-        <script src="../js/base.js" defer></script>
-        <script src="../search/main.js" defer></script>
-
-        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
-            </div>
-            <div class="modal-body">
-                <p>
-                    From here you can search these documents. Enter
-                    your search terms below.
-                </p>
-                <form role="form">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
-                    </div>
-                </form>
-                <div id="mkdocs-search-results"></div>
-            </div>
-            <div class="modal-footer">
-            </div>
-        </div>
-    </div>
-</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
-            </div>
-            <div class="modal-body">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th style="width: 20%;">Keys</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="help shortcut"><kbd>?</kbd></td>
-                    <td>Open this help</td>
-                  </tr>
-                  <tr>
-                    <td class="next shortcut"><kbd>n</kbd></td>
-                    <td>Next page</td>
-                  </tr>
-                  <tr>
-                    <td class="prev shortcut"><kbd>p</kbd></td>
-                    <td>Previous page</td>
-                  </tr>
-                  <tr>
-                    <td class="search shortcut"><kbd>s</kbd></td>
-                    <td>Search</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="modal-footer">
-            </div>
-        </div>
-    </div>
+<h3>Footnotes</h3>
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn:1">
+<p>In the <code>make menuconfig</code> configuration menus, the option can be
+  found under <code>Device Drivers &gt; USB support &gt; USB Test and
+  Measurement Class support</code>.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
 </div>
 
-    </body>
+</body>
 </html>

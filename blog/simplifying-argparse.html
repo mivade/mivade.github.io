@@ -1,199 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-        <meta name="author" content="Michael V. DePalatis">
-        
-        <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Simplifying argparse usage with subcommands - mike.depalatis.net</title>
-        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
-        <link href="../css/font-awesome.min.css" rel="stylesheet">
-        <link href="../css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/color-brewer.min.css">
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
-
-        <script src="../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../js/bootstrap-3.0.3.min.js" defer></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-        <script>hljs.initHighlightingOnLoad();</script> 
-    </head>
-
-    <body>
-
-        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-            <div class="container">
-
-                <!-- Collapsed navigation -->
-                <div class="navbar-header">
-                    <!-- Expander button -->
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="../index.html">mike.depalatis.net</a>
-                </div>
-
-                <!-- Expanded navigation -->
-                <div class="navbar-collapse collapse">
-                        <!-- Main navigation -->
-                        <ul class="nav navbar-nav">
-                            <li >
-                                <a href="../index.html">About</a>
-                            </li>
-                            <li >
-                                <a href="../resources.html">Resources</a>
-                            </li>
-                            <li class="dropdown active">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    
-<li >
-    <a href="../archives.html">Archives</a>
-</li>
-                                    
-  <li class="dropdown-submenu">
-    <a href="#">2019</a>
-    <ul class="dropdown-menu">
-            
-<li >
-    <a href="sqlalchemy-timestamps.html">Ensuring timestamp storage in UTC with SQLAlchemy</a>
-</li>
-    </ul>
-  </li>
-                                    
-  <li class="dropdown-submenu">
-    <a href="#">2018</a>
-    <ul class="dropdown-menu">
-            
-<li >
-    <a href="conda-kernels.html">Jupyter integration with conda environments</a>
-</li>
-            
-<li >
-    <a href="conda-shortcuts.html">Useful BASH shortcuts for conda</a>
-</li>
-            
-<li >
-    <a href="multiline-lambdas.html">Multiline lambdas</a>
-</li>
-    </ul>
-  </li>
-                                    
-  <li class="dropdown-submenu">
-    <a href="#">2017</a>
-    <ul class="dropdown-menu">
-            
-<li >
-    <a href="ipc-with-sqlite.html">Sharing data between processes with SQLite</a>
-</li>
-    </ul>
-  </li>
-                                    
-  <li class="dropdown-submenu">
-    <a href="#">2016</a>
-    <ul class="dropdown-menu">
-            
-<li >
-    <a href="lmfit.html">Fitting with lmfit</a>
-</li>
-            
-<li >
-    <a href="matplotlib-color-cycle.html">Getting Matplotlib's colors in order</a>
-</li>
-            
-<li >
-    <a href="postgres-time-series-database.html">Using Postgres as a time series database</a>
-</li>
-            
-<li class="active">
-    <a href="simplifying-argparse.html">Simplifying argparse usage with subcommands</a>
-</li>
-            
-<li >
-    <a href="javascript-for-python-programmers.html">Javascript for Python programmers</a>
-</li>
-    </ul>
-  </li>
-                                    
-  <li class="dropdown-submenu">
-    <a href="#">2015</a>
-    <ul class="dropdown-menu">
-            
-<li >
-    <a href="blocking-code-to-tornado-coroutine.html">Running (possibly) blocking code like a Tornado coroutine</a>
-</li>
-            
-<li >
-    <a href="tornado-background-tasks.html">Background tasks with Tornado</a>
-</li>
-            
-<li >
-    <a href="flask-sse-demo.html">Flask and server-sent events</a>
-</li>
-            
-<li >
-    <a href="hg-import-from-another-repo.html">Importing one Mercurial repository into another</a>
-</li>
-    </ul>
-  </li>
-                                    
-  <li class="dropdown-submenu">
-    <a href="#">2014</a>
-    <ul class="dropdown-menu">
-            
-<li >
-    <a href="rpi-usb-ethernet-gateway.html">Raspberry Pi as a USB to Ethernet Gateway</a>
-</li>
-            
-<li >
-    <a href="sudo-ssh-auth.html">ssh-agent for sudo authentication with a passwordless account</a>
-</li>
-            
-<li >
-    <a href="flask-websockets-with-tornado.html">Using websockets with Flask via Tornado</a>
-</li>
-    </ul>
-  </li>
-                                </ul>
-                            </li>
-                        </ul>
-
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
-                                <i class="fa fa-search"></i> Search
-                            </a>
-                        </li>
-                            <li >
-                                <a rel="next" href="postgres-time-series-database.html">
-                                    <i class="fa fa-arrow-left"></i> Previous
-                                </a>
-                            </li>
-                            <li >
-                                <a rel="prev" href="javascript-for-python-programmers.html">
-                                    Next <i class="fa fa-arrow-right"></i>
-                                </a>
-                            </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
-    <div class="col-md-12" role="main">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simplifying argparse usage with subcommands - mike.depalatis.net</title>
+<link rel="stylesheet" href="/css/inter.css">
+<link rel="stylesheet" href="/css/new.css">
+<link rel="stylesheet" href="/css/codehilite.css">
+</head>
+<body>
+<header>
+<h1>mike.depalatis.net</h1>
+<nav>
+<a href="/index.html">Home</a>
+/
+<a href="/blog/index.html">Articles</a>
+/
+<a href="/resources.html">Resources</a>
+</nav>
+</header>
 
 
 <h1>Simplifying argparse usage with subcommands</h1>
-
 <p>One of the best things about Python is its standard library: it's
 frequently possible to create complex applications while requiring few
 (if any) external dependencies. For example, command line interfaces
@@ -210,24 +38,24 @@ functionality. The good news is that with a simple decorator and a
 convenience function, writing CLIs with subcommands in <code>argparse</code> is
 pretty trivial and clean.</p>
 <p>Start by creating a parser and subparsers in <code>cli.py</code>:</p>
-<pre><code class="py">from argparse import ArgumentParser
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">argparse</span> <span class="kn">import</span> <span class="n">ArgumentParser</span>
 
-cli = ArgumentParser()
-subparsers = cli.add_subparsers(dest=&quot;subcommand&quot;)
-</code></pre>
+<span class="n">cli</span> <span class="o">=</span> <span class="n">ArgumentParser</span><span class="p">()</span>
+<span class="n">subparsers</span> <span class="o">=</span> <span class="n">cli</span><span class="o">.</span><span class="n">add_subparsers</span><span class="p">(</span><span class="n">dest</span><span class="o">=</span><span class="s2">&quot;subcommand&quot;</span><span class="p">)</span>
+</code></pre></div>
 
 <p>Note that we are storing the name of the called subcommand so that we
 can later print help if either no subcommand is given or if an
 unrecognized one is. Now we can define a decorator to turn a function
 into a subcommand:</p>
-<pre><code class="py">def subcommand(args=[], parent=subparsers):
-    def decorator(func):
-        parser = parent.add_parser(func.__name__, description=func.__doc__)
-        for arg in args:
-            parser.add_argument(*arg[0], **arg[1])
-        parser.set_defaults(func=func)
-    return decorator
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">subcommand</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="p">[],</span> <span class="n">parent</span><span class="o">=</span><span class="n">subparsers</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">decorator</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+        <span class="n">parser</span> <span class="o">=</span> <span class="n">parent</span><span class="o">.</span><span class="n">add_parser</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">func</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
+            <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="o">*</span><span class="n">arg</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">**</span><span class="n">arg</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">set_defaults</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">func</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">decorator</span>
+</code></pre></div>
 
 <p>What this does is take the wrapped function and use its name and
 docstring for the subcommand name and help string, respectively. Next
@@ -237,19 +65,19 @@ to the decorator. In order to dispatch the command later, the usual
 the <code>func</code> variable.</p>
 <p>In the simplest case, we can create a subcommand which requires no
 arguments as follows:</p>
-<pre><code class="py">@subcommand()
-def nothing(args):
-    print(&quot;Nothing special!&quot;)
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="nd">@subcommand</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">nothing</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Nothing special!&quot;</span><span class="p">)</span>
+</code></pre></div>
 
 <p>Meanwhile, in our main function, we dispatch the subcommand as follows:</p>
-<pre><code class="py">if __name__ == &quot;__main__&quot;:
-    args = cli.parse_args()
-    if args.subcommand is None:
-        cli.print_help()
-    else:
-        args.func(args)
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="n">cli</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">subcommand</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">cli</span><span class="o">.</span><span class="n">print_help</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">args</span><span class="o">.</span><span class="n">func</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+</code></pre></div>
 
 <p>Now running <code>python cli.py nothing</code> will run the <code>nothing</code> function
 and simply print <code>Nothing special!</code> to stdout.</p>
@@ -260,105 +88,28 @@ for the argument and all keyword arguments used by
 <code>ArgumentParser.add_argument</code>. This is a bit cumbersome as is, so it's
 useful to define a small helper function that takes arguments just
 like <code>ArgumentParser.add_argument</code>:</p>
-<pre><code class="py">def argument(*name_or_flags, **kwargs):
-    return ([*name_or_flags], kwargs)
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">argument</span><span class="p">(</span><span class="o">*</span><span class="n">name_or_flags</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">([</span><span class="o">*</span><span class="n">name_or_flags</span><span class="p">],</span> <span class="n">kwargs</span><span class="p">)</span>
+</code></pre></div>
 
 <p>Now we can define commands with arguments like so:</p>
-<pre><code class="py">@subcommand([argument(&quot;-d&quot;, help=&quot;Debug mode&quot;, action=&quot;store_true&quot;)])
-def test(args):
-    print(args)
+<div class="codehilite"><pre><span></span><code><span class="nd">@subcommand</span><span class="p">([</span><span class="n">argument</span><span class="p">(</span><span class="s2">&quot;-d&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Debug mode&quot;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_true&quot;</span><span class="p">)])</span>
+<span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
 
 
-@subcommand([argument(&quot;-f&quot;, &quot;--filename&quot;, help=&quot;A thing with a filename&quot;)])
-def filename(args):
-    print(args.filename)
+<span class="nd">@subcommand</span><span class="p">([</span><span class="n">argument</span><span class="p">(</span><span class="s2">&quot;-f&quot;</span><span class="p">,</span> <span class="s2">&quot;--filename&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;A thing with a filename&quot;</span><span class="p">)])</span>
+<span class="k">def</span> <span class="nf">filename</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">filename</span><span class="p">)</span>
 
 
-@subcommand([argument(&quot;name&quot;, help=&quot;Name&quot;)])
-def name(args):
-    print(args.name)
-</code></pre>
+<span class="nd">@subcommand</span><span class="p">([</span><span class="n">argument</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Name&quot;</span><span class="p">)])</span>
+<span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+</code></pre></div>
 
 <p>That's all there is to it! Quite a bit better than <a href="https://docs.python.org/3/library/argparse.html#sub-commands">the default way</a>
-to build a CLI with subcommands. The full example can be found <a href="https://gist.github.com/mivade/384c2c41c3a29c637cb6c603d4197f9f">here</a>.</p></div>
+to build a CLI with subcommands. The full example can be found <a href="https://gist.github.com/mivade/384c2c41c3a29c637cb6c603d4197f9f">here</a>.</p>
 
-        </div>
-
-        <footer class="col-md-12">
-            <hr>
-            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
-        </footer>
-        <script>
-            var base_url = "..",
-                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
-        </script>
-        <script src="../js/base.js" defer></script>
-        <script src="../search/main.js" defer></script>
-
-        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
-            </div>
-            <div class="modal-body">
-                <p>
-                    From here you can search these documents. Enter
-                    your search terms below.
-                </p>
-                <form role="form">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
-                    </div>
-                </form>
-                <div id="mkdocs-search-results"></div>
-            </div>
-            <div class="modal-footer">
-            </div>
-        </div>
-    </div>
-</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
-            </div>
-            <div class="modal-body">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th style="width: 20%;">Keys</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="help shortcut"><kbd>?</kbd></td>
-                    <td>Open this help</td>
-                  </tr>
-                  <tr>
-                    <td class="next shortcut"><kbd>n</kbd></td>
-                    <td>Next page</td>
-                  </tr>
-                  <tr>
-                    <td class="prev shortcut"><kbd>p</kbd></td>
-                    <td>Previous page</td>
-                  </tr>
-                  <tr>
-                    <td class="search shortcut"><kbd>s</kbd></td>
-                    <td>Search</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="modal-footer">
-            </div>
-        </div>
-    </div>
-</div>
-
-    </body>
+</body>
 </html>

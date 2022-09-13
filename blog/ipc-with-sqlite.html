@@ -1,203 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-        <meta name="author" content="Michael V. DePalatis">
-        
-        <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Sharing data between processes with SQLite - mike.depalatis.net</title>
-        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
-        <link href="../css/font-awesome.min.css" rel="stylesheet">
-        <link href="../css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/color-brewer.min.css">
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
-
-        <script src="../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../js/bootstrap-3.0.3.min.js" defer></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-        <script>hljs.initHighlightingOnLoad();</script> 
-    </head>
-
-    <body>
-
-        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-            <div class="container">
-
-                <!-- Collapsed navigation -->
-                <div class="navbar-header">
-                    <!-- Expander button -->
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="../index.html">mike.depalatis.net</a>
-                </div>
-
-                <!-- Expanded navigation -->
-                <div class="navbar-collapse collapse">
-                        <!-- Main navigation -->
-                        <ul class="nav navbar-nav">
-                            <li >
-                                <a href="../index.html">About</a>
-                            </li>
-                            <li >
-                                <a href="../resources.html">Resources</a>
-                            </li>
-                            <li class="dropdown active">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    
-<li >
-    <a href="../archives.html">Archives</a>
-</li>
-                                    
-  <li class="dropdown-submenu">
-    <a href="#">2019</a>
-    <ul class="dropdown-menu">
-            
-<li >
-    <a href="sqlalchemy-timestamps.html">Ensuring timestamp storage in UTC with SQLAlchemy</a>
-</li>
-    </ul>
-  </li>
-                                    
-  <li class="dropdown-submenu">
-    <a href="#">2018</a>
-    <ul class="dropdown-menu">
-            
-<li >
-    <a href="conda-kernels.html">Jupyter integration with conda environments</a>
-</li>
-            
-<li >
-    <a href="conda-shortcuts.html">Useful BASH shortcuts for conda</a>
-</li>
-            
-<li >
-    <a href="multiline-lambdas.html">Multiline lambdas</a>
-</li>
-    </ul>
-  </li>
-                                    
-  <li class="dropdown-submenu">
-    <a href="#">2017</a>
-    <ul class="dropdown-menu">
-            
-<li class="active">
-    <a href="ipc-with-sqlite.html">Sharing data between processes with SQLite</a>
-</li>
-    </ul>
-  </li>
-                                    
-  <li class="dropdown-submenu">
-    <a href="#">2016</a>
-    <ul class="dropdown-menu">
-            
-<li >
-    <a href="lmfit.html">Fitting with lmfit</a>
-</li>
-            
-<li >
-    <a href="matplotlib-color-cycle.html">Getting Matplotlib's colors in order</a>
-</li>
-            
-<li >
-    <a href="postgres-time-series-database.html">Using Postgres as a time series database</a>
-</li>
-            
-<li >
-    <a href="simplifying-argparse.html">Simplifying argparse usage with subcommands</a>
-</li>
-            
-<li >
-    <a href="javascript-for-python-programmers.html">Javascript for Python programmers</a>
-</li>
-    </ul>
-  </li>
-                                    
-  <li class="dropdown-submenu">
-    <a href="#">2015</a>
-    <ul class="dropdown-menu">
-            
-<li >
-    <a href="blocking-code-to-tornado-coroutine.html">Running (possibly) blocking code like a Tornado coroutine</a>
-</li>
-            
-<li >
-    <a href="tornado-background-tasks.html">Background tasks with Tornado</a>
-</li>
-            
-<li >
-    <a href="flask-sse-demo.html">Flask and server-sent events</a>
-</li>
-            
-<li >
-    <a href="hg-import-from-another-repo.html">Importing one Mercurial repository into another</a>
-</li>
-    </ul>
-  </li>
-                                    
-  <li class="dropdown-submenu">
-    <a href="#">2014</a>
-    <ul class="dropdown-menu">
-            
-<li >
-    <a href="rpi-usb-ethernet-gateway.html">Raspberry Pi as a USB to Ethernet Gateway</a>
-</li>
-            
-<li >
-    <a href="sudo-ssh-auth.html">ssh-agent for sudo authentication with a passwordless account</a>
-</li>
-            
-<li >
-    <a href="flask-websockets-with-tornado.html">Using websockets with Flask via Tornado</a>
-</li>
-    </ul>
-  </li>
-                                </ul>
-                            </li>
-                        </ul>
-
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
-                                <i class="fa fa-search"></i> Search
-                            </a>
-                        </li>
-                            <li >
-                                <a rel="next" href="multiline-lambdas.html">
-                                    <i class="fa fa-arrow-left"></i> Previous
-                                </a>
-                            </li>
-                            <li >
-                                <a rel="prev" href="lmfit.html">
-                                    Next <i class="fa fa-arrow-right"></i>
-                                </a>
-                            </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
-    <div class="col-md-12" role="main">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sharing data between processes with SQLite - mike.depalatis.net</title>
+<link rel="stylesheet" href="/css/inter.css">
+<link rel="stylesheet" href="/css/new.css">
+<link rel="stylesheet" href="/css/codehilite.css">
+</head>
+<body>
+<header>
+<h1>mike.depalatis.net</h1>
+<nav>
+<a href="/index.html">Home</a>
+/
+<a href="/blog/index.html">Articles</a>
+/
+<a href="/resources.html">Resources</a>
+</nav>
+</header>
 
 
 <h1>Sharing data between processes with SQLite</h1>
-
 <p>Because of the global interpreter lock in CPython, it is sometimes beneficial to
 use separate processes to handle different tasks. This can pose a challenge for
 sharing data: it's generally best to avoid sharing memory between processes for
-reasons of safety[^1]. One common approach is to use pipes, queues, or sockets
+reasons of safety<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>. One common approach is to use pipes, queues, or sockets
 to communicate data from one process to another. This approach works quite well,
 but it can be a bit cumbersome to get right when there are more than two
 processes involved and you just need to share a small amount of infrequently
@@ -213,103 +41,33 @@ a
 <a href="https://pypi.python.org/pypi/sqldict/0.5.2">new</a> <a href="https://dataset.readthedocs.io/en/latest/">idea</a>,
 but it was fun and simple to utilize only the Python standard library to
 accomplish this. A basic usage example:</p>
-<pre><code class="python">&gt;&gt;&gt; from permadict import Permadict
-&gt;&gt;&gt; d = Permadict(&quot;db.sqlite&quot;)
-&gt;&gt;&gt; d[&quot;key&quot;] = &quot;value&quot;
-&gt;&gt;&gt; print(d[&quot;key&quot;])
-value
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">permadict</span> <span class="kn">import</span> <span class="n">Permadict</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="n">Permadict</span><span class="p">(</span><span class="s2">&quot;db.sqlite&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="p">[</span><span class="s2">&quot;key&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;value&quot;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s2">&quot;key&quot;</span><span class="p">])</span>
+<span class="n">value</span>
+</code></pre></div>
 
 <p>Because context managers are great, you can also use permadicts that way:</p>
-<pre><code class="python">&gt;&gt;&gt; with Permadict(&quot;db.sqlite&quot;) as d:
-...     d[&quot;something&quot;] = 1.2345
-...
-&gt;&gt;&gt; with Permadict(&quot;db.sqlite&quot;) as d:
-...     print(d[&quot;something&quot;])
-...
-1.2345
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="k">with</span> <span class="n">Permadict</span><span class="p">(</span><span class="s2">&quot;db.sqlite&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">d</span><span class="p">:</span>
+<span class="o">...</span>     <span class="n">d</span><span class="p">[</span><span class="s2">&quot;something&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.2345</span>
+<span class="o">...</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">with</span> <span class="n">Permadict</span><span class="p">(</span><span class="s2">&quot;db.sqlite&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">d</span><span class="p">:</span>
+<span class="o">...</span>     <span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s2">&quot;something&quot;</span><span class="p">])</span>
+<span class="o">...</span>
+<span class="mf">1.2345</span>
+</code></pre></div>
 
-<p>[^1]: Of course, Python allows you to share memory among processes by using a
-    <a href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing-managers">manager</a>,
-    but this is not always possible depending on the specific use case.</p></div>
-
-        </div>
-
-        <footer class="col-md-12">
-            <hr>
-            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
-        </footer>
-        <script>
-            var base_url = "..",
-                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
-        </script>
-        <script src="../js/base.js" defer></script>
-        <script src="../search/main.js" defer></script>
-
-        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
-            </div>
-            <div class="modal-body">
-                <p>
-                    From here you can search these documents. Enter
-                    your search terms below.
-                </p>
-                <form role="form">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
-                    </div>
-                </form>
-                <div id="mkdocs-search-results"></div>
-            </div>
-            <div class="modal-footer">
-            </div>
-        </div>
-    </div>
-</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
-            </div>
-            <div class="modal-body">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th style="width: 20%;">Keys</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="help shortcut"><kbd>?</kbd></td>
-                    <td>Open this help</td>
-                  </tr>
-                  <tr>
-                    <td class="next shortcut"><kbd>n</kbd></td>
-                    <td>Next page</td>
-                  </tr>
-                  <tr>
-                    <td class="prev shortcut"><kbd>p</kbd></td>
-                    <td>Previous page</td>
-                  </tr>
-                  <tr>
-                    <td class="search shortcut"><kbd>s</kbd></td>
-                    <td>Search</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="modal-footer">
-            </div>
-        </div>
-    </div>
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn:1">
+<p>Of course, Python allows you to share memory among processes by using a
+<a href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing-managers">manager</a>,
+but this is not always possible depending on the specific use case.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
 </div>
 
-    </body>
+</body>
 </html>

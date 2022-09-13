@@ -1,199 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-        <meta name="author" content="Michael V. DePalatis">
-        
-        <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Javascript for Python programmers - mike.depalatis.net</title>
-        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
-        <link href="../css/font-awesome.min.css" rel="stylesheet">
-        <link href="../css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/color-brewer.min.css">
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
-
-        <script src="../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../js/bootstrap-3.0.3.min.js" defer></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-        <script>hljs.initHighlightingOnLoad();</script> 
-    </head>
-
-    <body>
-
-        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-            <div class="container">
-
-                <!-- Collapsed navigation -->
-                <div class="navbar-header">
-                    <!-- Expander button -->
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="../index.html">mike.depalatis.net</a>
-                </div>
-
-                <!-- Expanded navigation -->
-                <div class="navbar-collapse collapse">
-                        <!-- Main navigation -->
-                        <ul class="nav navbar-nav">
-                            <li >
-                                <a href="../index.html">About</a>
-                            </li>
-                            <li >
-                                <a href="../resources.html">Resources</a>
-                            </li>
-                            <li class="dropdown active">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    
-<li >
-    <a href="../archives.html">Archives</a>
-</li>
-                                    
-  <li class="dropdown-submenu">
-    <a href="#">2019</a>
-    <ul class="dropdown-menu">
-            
-<li >
-    <a href="sqlalchemy-timestamps.html">Ensuring timestamp storage in UTC with SQLAlchemy</a>
-</li>
-    </ul>
-  </li>
-                                    
-  <li class="dropdown-submenu">
-    <a href="#">2018</a>
-    <ul class="dropdown-menu">
-            
-<li >
-    <a href="conda-kernels.html">Jupyter integration with conda environments</a>
-</li>
-            
-<li >
-    <a href="conda-shortcuts.html">Useful BASH shortcuts for conda</a>
-</li>
-            
-<li >
-    <a href="multiline-lambdas.html">Multiline lambdas</a>
-</li>
-    </ul>
-  </li>
-                                    
-  <li class="dropdown-submenu">
-    <a href="#">2017</a>
-    <ul class="dropdown-menu">
-            
-<li >
-    <a href="ipc-with-sqlite.html">Sharing data between processes with SQLite</a>
-</li>
-    </ul>
-  </li>
-                                    
-  <li class="dropdown-submenu">
-    <a href="#">2016</a>
-    <ul class="dropdown-menu">
-            
-<li >
-    <a href="lmfit.html">Fitting with lmfit</a>
-</li>
-            
-<li >
-    <a href="matplotlib-color-cycle.html">Getting Matplotlib's colors in order</a>
-</li>
-            
-<li >
-    <a href="postgres-time-series-database.html">Using Postgres as a time series database</a>
-</li>
-            
-<li >
-    <a href="simplifying-argparse.html">Simplifying argparse usage with subcommands</a>
-</li>
-            
-<li class="active">
-    <a href="javascript-for-python-programmers.html">Javascript for Python programmers</a>
-</li>
-    </ul>
-  </li>
-                                    
-  <li class="dropdown-submenu">
-    <a href="#">2015</a>
-    <ul class="dropdown-menu">
-            
-<li >
-    <a href="blocking-code-to-tornado-coroutine.html">Running (possibly) blocking code like a Tornado coroutine</a>
-</li>
-            
-<li >
-    <a href="tornado-background-tasks.html">Background tasks with Tornado</a>
-</li>
-            
-<li >
-    <a href="flask-sse-demo.html">Flask and server-sent events</a>
-</li>
-            
-<li >
-    <a href="hg-import-from-another-repo.html">Importing one Mercurial repository into another</a>
-</li>
-    </ul>
-  </li>
-                                    
-  <li class="dropdown-submenu">
-    <a href="#">2014</a>
-    <ul class="dropdown-menu">
-            
-<li >
-    <a href="rpi-usb-ethernet-gateway.html">Raspberry Pi as a USB to Ethernet Gateway</a>
-</li>
-            
-<li >
-    <a href="sudo-ssh-auth.html">ssh-agent for sudo authentication with a passwordless account</a>
-</li>
-            
-<li >
-    <a href="flask-websockets-with-tornado.html">Using websockets with Flask via Tornado</a>
-</li>
-    </ul>
-  </li>
-                                </ul>
-                            </li>
-                        </ul>
-
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
-                                <i class="fa fa-search"></i> Search
-                            </a>
-                        </li>
-                            <li >
-                                <a rel="next" href="simplifying-argparse.html">
-                                    <i class="fa fa-arrow-left"></i> Previous
-                                </a>
-                            </li>
-                            <li >
-                                <a rel="prev" href="blocking-code-to-tornado-coroutine.html">
-                                    Next <i class="fa fa-arrow-right"></i>
-                                </a>
-                            </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
-    <div class="col-md-12" role="main">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Javascript for Python programmers - mike.depalatis.net</title>
+<link rel="stylesheet" href="/css/inter.css">
+<link rel="stylesheet" href="/css/new.css">
+<link rel="stylesheet" href="/css/codehilite.css">
+</head>
+<body>
+<header>
+<h1>mike.depalatis.net</h1>
+<nav>
+<a href="/index.html">Home</a>
+/
+<a href="/blog/index.html">Articles</a>
+/
+<a href="/resources.html">Resources</a>
+</nav>
+</header>
 
 
 <h1>Javascript for Python programmers</h1>
-
 <p>Unless you're just writing a simple HTTP API server, any amount of web
 programming in Python will likely require at least a little bit of
 Javascript. Like it or not (and I will try to argue in this post that
@@ -204,7 +32,7 @@ page. Sure, there are a <a href="http://pyjs.org/">number</a> of <a href="https:
 limit the ability to use new Javascript features as they are rolled
 out to browsers and may limit the ability to use third-party
 Javascript libraries. At the very least, using one these transpilers
-introduces added complexity to deploying a web app[^1].</p>
+introduces added complexity to deploying a web app<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.</p>
 <p>In this post, I will describe some things I've learned about
 Javascript from the perspective of someone who prefers to use Python
 as much as possible. This guide is mainly aimed at scientists and
@@ -212,56 +40,56 @@ others who are not primarily programmers but who may find it useful to
 make a web app for their main work. It is assumed that the reader is
 at least moderately familiar with Javascript (Mozilla has
 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript">a nice tutorial</a> to get you up to speed if not).</p>
-<h2 id="namespaces-encapsulation-modularization-and-bundling">Namespaces, encapsulation, modularization, and bundling</h2>
+<h2>Namespaces, encapsulation, modularization, and bundling</h2>
 <p>Modules in Python make it very easy to encapsulate components without
 polluting the global namespace. In contrast, Javascript in the browser
-will make everything a global if you are not careful[^2]. The good
+will make everything a global if you are not careful<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>. The good
 news is that it doesn't require too much extra effort to use a sort of
 module pattern in your Javascript code thanks to things like object
 literals and <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures">closures</a>. Imagine you are writing some code to do
 some simple math operations that aren't in the Javascript
 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math"><code>Math</code></a> library. Instead of doing this:</p>
-<pre><code class="javascript">// Don't do this
-function mean(x) {
-  var i;
-  var total = 0;
-  for (i = 0; i &lt; x.length; i++) {
-    total += x[i];
-    }
-  return total/x.length;
-}
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="c1">// Don&#39;t do this</span><span class="w"></span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">mean</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">i</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">x</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">total</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nx">x</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">total</span><span class="o">/</span><span class="nx">x</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <p>you should prefer putting your functions in an object:</p>
-<pre><code class="javascript">// This is better
-var mathlib = {
-  mean: function (x) {
-    var i;
-    var total = 0;
-    for (i = 0; i &lt; x.length; i++) {
-      total += x[i];
-    }
-    return total/x.length;
-  }
-};
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="c1">// This is better</span><span class="w"></span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">mathlib</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">mean</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">i</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">x</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nx">total</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nx">x</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">total</span><span class="o">/</span><span class="nx">x</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</code></pre></div>
 
 <p>An even better approach is to wrap your definitions in a closure to
 keep things better encapsulated:</p>
-<pre><code class="javascript">// This is even better!
-var mathlib = (function (lib) {
-  lib.mean = function (x) {
-    var i;
-    var total = 0;
-    for (i = 0; i &lt; x.length; i++) {
-      total += x[i];
-    }
-    return total/x.length;
-  };
+<div class="codehilite"><pre><span></span><code><span class="c1">// This is even better!</span><span class="w"></span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">mathlib</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">lib</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">lib</span><span class="p">.</span><span class="nx">mean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">i</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">x</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nx">total</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nx">x</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">total</span><span class="o">/</span><span class="nx">x</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">};</span><span class="w"></span>
 
-  return lib;
-})(mathlib || {});
-</code></pre>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">lib</span><span class="p">;</span><span class="w"></span>
+<span class="p">})(</span><span class="nx">mathlib</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">{});</span><span class="w"></span>
+</code></pre></div>
 
 <p>This pattern allows for splitting components for a larger module into
 different files, which is often a good idea from the perspective of
@@ -269,7 +97,7 @@ readability when things start getting more complex. Rather than go
 into further detail, I'll refer you to an excellent article on the
 <a href="http://www.adequatelygood.com/JavaScript-Module-Pattern-In-Depth.html">module pattern in Javascript</a>
 by Ben Cherry.</p>
-<h2 id="bundling">Bundling</h2>
+<h2>Bundling</h2>
 <p>HTTP/1.1 requires a new connection for every requested Javascript
 file. While this problem is rectified in HTTP/2, not many web servers
 and hosting providers support it yet as of late 2016. This has led to
@@ -302,42 +130,42 @@ files (for cases where it makes sense to split code into more than a
 single file) is the <a href="https://webassets.readthedocs.io/en/latest/">webassets</a> module. Webassets offers a number of
 filters to run Javascript and CSS files through to accomplish tasks
 such as as minification and bundling. Here's a sample Tornado app:</p>
-<pre><code class="python">import tornado.web
-import tornado.ioloop
-from webassets import Environment
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">tornado.web</span>
+<span class="kn">import</span> <span class="nn">tornado.ioloop</span>
+<span class="kn">from</span> <span class="nn">webassets</span> <span class="kn">import</span> <span class="n">Environment</span>
 
 
-class MainHandler(tornado.web.RequestHandler):
-    def initialize(self, assets):
-        self.assets = assets
+<span class="k">class</span> <span class="nc">MainHandler</span><span class="p">(</span><span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">RequestHandler</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">assets</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assets</span> <span class="o">=</span> <span class="n">assets</span>
 
-    def get(self):
-        self.render(&quot;index.html&quot;, assets=assets)
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="s2">&quot;index.html&quot;</span><span class="p">,</span> <span class="n">assets</span><span class="o">=</span><span class="n">assets</span><span class="p">)</span>
 
 
-# Set up the webassets environment and make a bundle
-assets = Environment(directory=&quot;.&quot;, url=&quot;/static&quot;)
-js_files = [&quot;mathlib.js&quot;, &quot;thing.js&quot;, &quot;class-example.js&quot;]
-assets.register(&quot;bundle&quot;, *js_files,
-                output=&quot;bundled.min.js&quot;,
-                filters=&quot;rjsmin&quot;)  # webassets ships with this filter included
+<span class="c1"># Set up the webassets environment and make a bundle</span>
+<span class="n">assets</span> <span class="o">=</span> <span class="n">Environment</span><span class="p">(</span><span class="n">directory</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/static&quot;</span><span class="p">)</span>
+<span class="n">js_files</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;mathlib.js&quot;</span><span class="p">,</span> <span class="s2">&quot;thing.js&quot;</span><span class="p">,</span> <span class="s2">&quot;class-example.js&quot;</span><span class="p">]</span>
+<span class="n">assets</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s2">&quot;bundle&quot;</span><span class="p">,</span> <span class="o">*</span><span class="n">js_files</span><span class="p">,</span>
+                <span class="n">output</span><span class="o">=</span><span class="s2">&quot;bundled.min.js&quot;</span><span class="p">,</span>
+                <span class="n">filters</span><span class="o">=</span><span class="s2">&quot;rjsmin&quot;</span><span class="p">)</span>  <span class="c1"># webassets ships with this filter included</span>
 
-app = tornado.web.Application(
-    [(r'/', MainHandler, dict(assets=assets))],
-    static_path=&quot;.&quot;,
-    template_path=&quot;.&quot;,
-    debug=True)
+<span class="n">app</span> <span class="o">=</span> <span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">Application</span><span class="p">(</span>
+    <span class="p">[(</span><span class="sa">r</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="n">MainHandler</span><span class="p">,</span> <span class="nb">dict</span><span class="p">(</span><span class="n">assets</span><span class="o">=</span><span class="n">assets</span><span class="p">))],</span>
+    <span class="n">static_path</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">,</span>
+    <span class="n">template_path</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">,</span>
+    <span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-app.listen(8123)
-tornado.ioloop.IOLoop.current().start()
-</code></pre>
+<span class="n">app</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">8123</span><span class="p">)</span>
+<span class="n">tornado</span><span class="o">.</span><span class="n">ioloop</span><span class="o">.</span><span class="n">IOLoop</span><span class="o">.</span><span class="n">current</span><span class="p">()</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</code></pre></div>
 
 <p>To include the bundled file in the template, you would do something
 like this in the template:</p>
-<pre><code class="html">{% for url in assets['bundle'].urls() %}
-  &lt;script src=&quot;{{ url }}&quot;&gt;&lt;/script&gt;
+<div class="codehilite"><pre><span></span><code>{% for url in assets[&#39;bundle&#39;].urls() %}
+  <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;{{ url }}&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 {% end %}
-</code></pre>
+</code></pre></div>
 
 <p>The careful reader may wonder why the for loop is used if all the
 Javascript files will be bundled into a single file in the end. This
@@ -357,47 +185,47 @@ unless you are comfortable with the rabbit hole of the Node world.</p>
 early, it looks like a promising way of being able to include things
 that currently require Node-based tools while keeping everything
 purely Pythonic.)</p>
-<h2 id="embracing-the-present">Embracing the present</h2>
+<h2>Embracing the present</h2>
 <p>Among Python programmers, Javascript has a tendency to be considered a
 very poor programming language in terms of features and syntax. While
 this was once a more valid criticism, Javascript has steadily
 improved, and especially with the introduction of the <a href="http://www.ecma-international.org/ecma-262/6.0/">ES2015</a>
-standard, it's a very comfortable language to work in[^3]. In this
+standard, it's a very comfortable language to work in<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup>. In this
 section, I will cover a few of the more useful features made available
 in ES2015 with the small caveat that using them requires using fairly
 up-to-date browsers (which is not normally a problem among scientists
 who in my experience are all using either Firefox or Chrome, anyway).</p>
-<h3 id="arrow-functions">Arrow functions</h3>
+<h3>Arrow functions</h3>
 <p>In Python, <code>self</code> by convention refers to the instance of a
 class. This means that even with nested function definitions, the
 reference to <code>self</code> is always unambiguous, so you could do something
 like</p>
-<pre><code class="python">class Thing:
-    def __init__(self, value):
-        self.value = value
+<div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">Thing</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span>
 
-    def method(self):
-        def function():
-            return self.value
-        return function()
-</code></pre>
+    <span class="k">def</span> <span class="nf">method</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">function</span><span class="p">():</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span>
+        <span class="k">return</span> <span class="n">function</span><span class="p">()</span>
+</code></pre></div>
 
 <p>and expect calling the <code>method</code> method on an instance of <code>Thing</code> to
 correctly return <code>thing.value</code>. In Javascript, the approximate
 equivalent of <code>self</code> is <code>this</code> which is by default bound <em>as a
 reference to the function being called</em>. In other words,</p>
-<pre><code class="javascript">var thing = {
-  value: 1,
-  method: function () {
-    var func = function () {
-      return this.value;
-    };
-    return func();
-  }
-};
+<div class="codehilite"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">thing</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">func</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">};</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">func</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
 
-console.log(thing.method());
-</code></pre>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">thing</span><span class="p">.</span><span class="nx">method</span><span class="p">());</span><span class="w"></span>
+</code></pre></div>
 
 <p>will print <code>undefined</code> because <code>func</code> has no <code>value</code> attribute. This
 can be fixed by explicitly binding <code>this</code> to <code>func</code> (<code>func =
@@ -407,415 +235,349 @@ ES2015 introduced so-called <a href="https://developer.mozilla.org/en-US/docs/We
 Python lambdas on steroids. One nice feature of arrow functions is
 that they lexically bind the <code>this</code> variable so we can rewrite the
 above to read</p>
-<pre><code class="javascript">var thing = {
-  value: 1,
-  method: function () {
-    var func = () =&gt; this.value;
-    return func();
-  }
-};
+<div class="codehilite"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">thing</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">func</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">func</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
 
-console.log(thing.method());
-</code></pre>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">thing</span><span class="p">.</span><span class="nx">method</span><span class="p">());</span><span class="w"></span>
+</code></pre></div>
 
 <p>which correctly outputs <code>1</code>.</p>
-<h3 id="classes">Classes</h3>
+<h3>Classes</h3>
 <p>Prior to ES2015, classes in Javascript had to be implemented with a
 function:</p>
-<pre><code class="javascript">function MyClass(value) {
-  this.value = value;
-}
+<div class="codehilite"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">MyClass</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">this</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">value</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-var instance = new MyClass(10);
-</code></pre>
+<span class="kd">var</span><span class="w"> </span><span class="nx">instance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">MyClass</span><span class="p">(</span><span class="mf">10</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
 
 <p>Implementing inheritance was cumbersome and required the use of the
 <code>prototype</code> attribute:</p>
-<pre><code class="javascript">function Programmer(language) {
-  this.language = language;
-}
+<div class="codehilite"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">Programmer</span><span class="p">(</span><span class="nx">language</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">this</span><span class="p">.</span><span class="nx">language</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">language</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-// Add a method to the Programmer prototype
-Programmer.prototype.programThings = function () {
-  console.log(&quot;Favorite language: &quot; + this.language);
-  console.log(this instanceof Programmer);
-};
+<span class="c1">// Add a method to the Programmer prototype</span><span class="w"></span>
+<span class="nx">Programmer</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">programThings</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Favorite language: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">language</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="w"> </span><span class="ow">instanceof</span><span class="w"> </span><span class="nx">Programmer</span><span class="p">);</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
 
-// Create child classes
-function PythonProgrammer() {
-  Programmer.call(this);
-  this.language = &quot;Python&quot;;
-}
+<span class="c1">// Create child classes</span><span class="w"></span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">PythonProgrammer</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">Programmer</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">this</span><span class="p">.</span><span class="nx">language</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Python&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-PythonProgrammer.prototype = Object.create(Programmer.prototype);
+<span class="nx">PythonProgrammer</span><span class="p">.</span><span class="nx">prototype</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">Programmer</span><span class="p">.</span><span class="nx">prototype</span><span class="p">);</span><span class="w"></span>
 
-function JavascriptProgrammer() {
-  Programmer.call(this);
-  this.language = &quot;Javascript&quot;;
-}
+<span class="kd">function</span><span class="w"> </span><span class="nx">JavascriptProgrammer</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">Programmer</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">this</span><span class="p">.</span><span class="nx">language</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Javascript&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-JavascriptProgrammer.prototype = Object.create(Programmer.prototype);
+<span class="nx">JavascriptProgrammer</span><span class="p">.</span><span class="nx">prototype</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">Programmer</span><span class="p">.</span><span class="nx">prototype</span><span class="p">);</span><span class="w"></span>
 
-var pythonProgrammer = new PythonProgrammer();
-var jsProgrammer = new JavascriptProgrammer();
+<span class="kd">var</span><span class="w"> </span><span class="nx">pythonProgrammer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">PythonProgrammer</span><span class="p">();</span><span class="w"></span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">jsProgrammer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">JavascriptProgrammer</span><span class="p">();</span><span class="w"></span>
 
-pythonProgrammer.programThings();
-jsProgrammer.programThings();
+<span class="nx">pythonProgrammer</span><span class="p">.</span><span class="nx">programThings</span><span class="p">();</span><span class="w"></span>
+<span class="nx">jsProgrammer</span><span class="p">.</span><span class="nx">programThings</span><span class="p">();</span><span class="w"></span>
 
-/* Output:
+<span class="cm">/* Output:</span>
 
-Favorite language: Python
-true
-Favorite language: Javascript
-true */
-</code></pre>
+<span class="cm">Favorite language: Python</span>
+<span class="cm">true</span>
+<span class="cm">Favorite language: Javascript</span>
+<span class="cm">true */</span><span class="w"></span>
+</code></pre></div>
 
 <p>With ES2015, classes can be defined in a more Pythonic way:</p>
-<pre><code class="javascript">class MyBaseClass {
-  constructor(value) {
-    this.value = value;
-  }
+<div class="codehilite"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">MyBaseClass</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">value</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-  method() {
-    return this.value;
-  }
-}
+<span class="w">  </span><span class="nx">method</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-class MyNewClass extends MyBaseClass {
-  secondMethod() {
-    return this.value + 1;
-  }
-}
+<span class="kd">class</span><span class="w"> </span><span class="nx">MyNewClass</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">MyBaseClass</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">secondMethod</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-var instance = new MyNewClass(10);
-console.log(instance.method());
-console.log(instance.secondMethod());
-</code></pre>
+<span class="kd">var</span><span class="w"> </span><span class="nx">instance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">MyNewClass</span><span class="p">(</span><span class="mf">10</span><span class="p">);</span><span class="w"></span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">instance</span><span class="p">.</span><span class="nx">method</span><span class="p">());</span><span class="w"></span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">instance</span><span class="p">.</span><span class="nx">secondMethod</span><span class="p">());</span><span class="w"></span>
+</code></pre></div>
 
 <p>which outputs</p>
-<pre><code>10
-11
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="mf">10</span><span class="w"></span>
+<span class="mf">11</span><span class="w"></span>
+</code></pre></div>
 
-<h3 id="template-strings">Template strings</h3>
+<h3>Template strings</h3>
 <p>Despite the <a href="https://www.python.org/dev/peps/pep-0020/">Zen of Python</a> suggesting that "there should be one--
 and preferably only one --obvious way to do it," there are 3 ways to
 format strings as of Python 3.6. The newest of these ways is the
 so-called "f-string" introduced by <a href="https://www.python.org/dev/peps/pep-0498/">PEP 498</a>. This allows you to
 have variables dynamically inserted into strings without having to
 explicitly use %-formatting or the <code>str.format</code> method:</p>
-<pre><code class="python">x = 20
-print(f'{x} is 20')
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s1"> is 20&#39;</span><span class="p">)</span>
+</code></pre></div>
 
 <p>ES2015 has a similar concept in template strings:</p>
-<pre><code class="javascript">var x = 20;
-console.log(`${x} is 20.`);
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">20</span><span class="p">;</span><span class="w"></span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">x</span><span class="si">}</span><span class="sb"> is 20.`</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
 
 <p>Like Python docstrings, Javascript template strings can also span
 multiple lines:</p>
-<pre><code class="javascript">`this is
-ok
-even if it is
-a pointless string.`
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="sb">`this is</span>
+<span class="sb">ok</span>
+<span class="sb">even if it is</span>
+<span class="sb">a pointless string.`</span><span class="w"></span>
+</code></pre></div>
 
-<h3 id="iterators-generators-and-promises">Iterators, generators, and promises</h3>
+<h3>Iterators, generators, and promises</h3>
 <p>One of the most useful features of Python is to be able to easily
 iterate over a list:</p>
-<pre><code class="python">for x in y:
-    print(x)
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">y</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div>
 
 <p>Javascript has long had, for example, <code>Array.prototype.forEach()</code> to
 iterate over an array, but this requires the use of a callback
 function to act on each value in the array. Javascript now has the
 more Pythonic <code>for ... in</code> and <code>for ... of</code> statements:</p>
-<pre><code class="javascript">var list = [1, 2, 3, 4, 5];
-var obj = {
-  a: 1,
-  b: 2,
-  c: 3
-};
+<div class="codehilite"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">];</span><span class="w"></span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">a</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nx">b</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nx">c</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
 
-// for ... in on list makes x take on the *indeces* of list
-console.log(&quot;for (x in list)&quot;);
-for (let x in list) {
-  console.log(x);
-}
+<span class="c1">// for ... in on list makes x take on the *indeces* of list</span><span class="w"></span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;for (x in list)&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">list</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-// for ... of on list makes x take on the *values* of list
-console.log(&quot;for (x of list)&quot;);
-for (let x of list) {
-  console.log(x);
-}
+<span class="c1">// for ... of on list makes x take on the *values* of list</span><span class="w"></span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;for (x of list)&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">list</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-// for ... in on obj makes x take on the *keys* of obj
-console.log(&quot;for (x in obj)&quot;);
-for (let x in obj) {
-  console.log(x);
-}
-</code></pre>
+<span class="c1">// for ... in on obj makes x take on the *keys* of obj</span><span class="w"></span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;for (x in obj)&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">obj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <p>Generators are used frequently in Python to efficiently iterate over
 values without having to pre-compute and store in memory each loop
 iteration's result. In Javascript, a function must explicitly be
 declared a generator by denoting it a <code>function*</code> and using the
 familiar <code>yield</code> keyword:</p>
-<pre><code class="javascript">function* itsATrap() {
-  while (true) {
-    yield &quot;What is it?&quot;;
-    yield &quot;It's a trap!&quot;;
-  }
-}
+<div class="codehilite"><pre><span></span><code><span class="kd">function</span><span class="o">*</span><span class="w"> </span><span class="nx">itsATrap</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">yield</span><span class="w"> </span><span class="s2">&quot;What is it?&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">yield</span><span class="w"> </span><span class="s2">&quot;It&#39;s a trap!&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-var isItATrap = itsATrap();
-console.log(isItATrap.next().value);
-console.log(isItATrap.next().value);
-console.log(isItATrap.next().value);
-console.log(isItATrap.next().value);
-</code></pre>
+<span class="kd">var</span><span class="w"> </span><span class="nx">isItATrap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">itsATrap</span><span class="p">();</span><span class="w"></span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">isItATrap</span><span class="p">.</span><span class="nx">next</span><span class="p">().</span><span class="nx">value</span><span class="p">);</span><span class="w"></span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">isItATrap</span><span class="p">.</span><span class="nx">next</span><span class="p">().</span><span class="nx">value</span><span class="p">);</span><span class="w"></span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">isItATrap</span><span class="p">.</span><span class="nx">next</span><span class="p">().</span><span class="nx">value</span><span class="p">);</span><span class="w"></span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">isItATrap</span><span class="p">.</span><span class="nx">next</span><span class="p">().</span><span class="nx">value</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
 
-<h3 id="other-newer-features">Other newer features</h3>
+<h3>Other newer features</h3>
 <p>There are quite a few other nice things introduced by ES2015, but the
 above illustrates features that are perhaps the most welcomed by
 Python programmers. For a good overview of all newer Javascript
 features, see <a href="https://babeljs.io/docs/learn-es2015/">this</a>, for example.</p>
-<h2 id="pythonic-javascript-cheat-sheet">Pythonic Javascript cheat sheet</h2>
+<h2>Pythonic Javascript cheat sheet</h2>
 <p>To summarize, what follows are a series of short snippets showing some
 common Pythonic concepts and their Javascript analogs.</p>
-<h3 id="exception-handling">Exception handling</h3>
-<pre><code class="python">try:
-    thing()
-except Exception:
-    print(&quot;oh no!&quot;)
+<h3>Exception handling</h3>
+<div class="codehilite"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
+    <span class="n">thing</span><span class="p">()</span>
+<span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;oh no!&quot;</span><span class="p">)</span>
 
-raise ValueError(&quot;not a good value&quot;)
-</code></pre>
+<span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;not a good value&quot;</span><span class="p">)</span>
+</code></pre></div>
 
-<pre><code class="javascript">try {
-  thing();
-} catch (error) {
-  console.error(&quot;oh no!&quot;);
-}
+<div class="codehilite"><pre><span></span><code><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">thing</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">&quot;oh no!&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-throw &quot;not a good value&quot;;
-</code></pre>
+<span class="k">throw</span><span class="w"> </span><span class="s2">&quot;not a good value&quot;</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
 
-<h3 id="iterators">Iterators</h3>
-<pre><code class="python">arr = [1, 2, 3]
-obj = {
-    &quot;a&quot;: 1,
-    &quot;b&quot;: 2,
-    &quot;c&quot;: 3
-}
+<h3>Iterators</h3>
+<div class="codehilite"><pre><span></span><code><span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="s2">&quot;c&quot;</span><span class="p">:</span> <span class="mi">3</span>
+<span class="p">}</span>
 
-for val in arr:
-    print(val)
+<span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">arr</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
 
-for key in obj:
-    print(key)
-</code></pre>
+<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">obj</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+</code></pre></div>
 
-<pre><code class="javascript">var arr = [1, 2, 3];
-var obj = {
-  a: 1,
-  b: 2,
-  c: 3
-};
+<div class="codehilite"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">arr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">];</span><span class="w"></span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">a</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nx">b</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nx">c</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
 
-for (let val of arr) {
-  console.log(val);
-}
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">val</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">arr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">val</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-// or...
-arr.forEach((value, index) =&gt; {
-  console.log(value);
-});
+<span class="c1">// or...</span><span class="w"></span>
+<span class="nx">arr</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">index</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span><span class="w"></span>
+<span class="p">});</span><span class="w"></span>
 
-for (let key in obj) {
-  console.log(key);
-}
-</code></pre>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">key</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">obj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">key</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
-<h3 id="generators">Generators</h3>
-<pre><code class="python">def gen(x):
-    while True:
-        yield x
-        x = x + 1
-</code></pre>
+<h3>Generators</h3>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">gen</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">x</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+</code></pre></div>
 
-<pre><code class="javascript">function* gen(x) {
-  while (true) {
-    yield x;
-    x++;
-  }
-}
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="kd">function</span><span class="o">*</span><span class="w"> </span><span class="nx">gen</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">yield</span><span class="w"> </span><span class="nx">x</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="nx">x</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
-<h3 id="classes_1">Classes</h3>
-<pre><code class="python">class Thing:
-    def __init__(self, a):
-        self.a = a
+<h3>Classes</h3>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">Thing</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">a</span>
 
-    def add_one(self):
-        return self.a + 1
+    <span class="k">def</span> <span class="nf">add_one</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">+</span> <span class="mi">1</span>
 
-class OtherThing(Thing):
-    def __init__(self, a, b):
-        super(OtherThing, self).__init__(a)
-        self.b = b
+<span class="k">class</span> <span class="nc">OtherThing</span><span class="p">(</span><span class="n">Thing</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">OtherThing</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="n">b</span>
 
-    def add_things(self):
-        return self.a + self.b
-</code></pre>
+    <span class="k">def</span> <span class="nf">add_things</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span>
+</code></pre></div>
 
-<pre><code class="javascript">class Thing {
-  constructor(a) {
-    this.a = a;
-  }
+<div class="codehilite"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">Thing</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">a</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-  addOne() {
-    return this.a + 1;
-  }
-}
+<span class="w">  </span><span class="nx">addOne</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-class OtherThing extends Thing {
-  constructor(a, b) {
-    super(a);
-    this.b = b;
-  }
+<span class="kd">class</span><span class="w"> </span><span class="nx">OtherThing</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">Thing</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">super</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">b</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-  addThings() {
-    return this.a + this.b;
-  }
-}
-</code></pre>
+<span class="w">  </span><span class="nx">addThings</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">b</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
-<h3 id="functional-programming">Functional programming</h3>
-<h4 id="lambdas">Lambdas</h4>
-<pre><code class="python">expression = lambda a, b: a + b
-</code></pre>
+<h3>Functional programming</h3>
+<h4>Lambdas</h4>
+<div class="codehilite"><pre><span></span><code><span class="n">expression</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</code></pre></div>
 
-<pre><code class="javascript">// Arrow functions are more powerful than Python lambdas, but not in
-// this example!
-let expression = (a, b) =&gt; a + b;
+<div class="codehilite"><pre><span></span><code><span class="c1">// Arrow functions are more powerful than Python lambdas, but not in</span><span class="w"></span>
+<span class="c1">// this example!</span><span class="w"></span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">expression</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">b</span><span class="p">;</span><span class="w"></span>
 
-// or...
-let sameThing = function (a, b) {
-  return a + b;
-}
-</code></pre>
+<span class="c1">// or...</span><span class="w"></span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">sameThing</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">b</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
-<h4 id="mapreduce">MapReduce</h4>
-<pre><code class="python">from functools import reduce
+<h4>MapReduce</h4>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">reduce</span>
 
-mapped = map(lambda a: a + 1, range(10))
-print(reduce(lambda a, b: a + b, mapped))
-</code></pre>
+<span class="n">mapped</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">a</span><span class="p">:</span> <span class="n">a</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">,</span> <span class="n">mapped</span><span class="p">))</span>
+</code></pre></div>
 
-<pre><code class="javascript">let arr = [];
-for (let i = 0; i &lt; 10; i++) {
-  arr.push(i);
-}
-let mapped = arr.map((a) =&gt; a + 1);
-console.log(arr.reduce((a, b) =&gt; a + b));
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">arr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span><span class="w"></span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">10</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">arr</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">mapped</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">arr</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">a</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">);</span><span class="w"></span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arr</span><span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">b</span><span class="p">));</span><span class="w"></span>
+</code></pre></div>
 
-<h2 id="final-thoughts">Final thoughts</h2>
+<h2>Final thoughts</h2>
 <p>These days, Javascript the language is much improved and potentially
 more Pythonic than ever before. Approaching a little Javascript from
 the perspective of a Python programmer, you can write good, clear code
 while avoiding many of the (mostly outdated) common pitfalls often
 brought up by Javascript detractors.</p>
-<p>[^1]: Not that modern Javascript tooling is really so good at reducing
-complexity... More on this later.</p>
-<p>[^2]: Of course, there are tools like <a href="https://webpack.github.io/">webpack</a>
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn:1">
+<p>Not that modern Javascript tooling is really so good at reducing
+complexity... More on this later.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>Of course, there are tools like <a href="https://webpack.github.io/">webpack</a>
 that can let you use modern Javascript modules in the browser, but
 this requires the step of bundling all the Javascript sources into
 a browser-friendly bundle. Unless you are willing to dive deep into
 the, um, interesting world of Javascript tooling, I recommend against
-this as you get started with more complex Javascript.</p>
-<p>[^3]: Although it would be a lot nicer if there were actually a
-standard library to speak of.</p></div>
-
-        </div>
-
-        <footer class="col-md-12">
-            <hr>
-            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
-        </footer>
-        <script>
-            var base_url = "..",
-                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
-        </script>
-        <script src="../js/base.js" defer></script>
-        <script src="../search/main.js" defer></script>
-
-        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
-            </div>
-            <div class="modal-body">
-                <p>
-                    From here you can search these documents. Enter
-                    your search terms below.
-                </p>
-                <form role="form">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
-                    </div>
-                </form>
-                <div id="mkdocs-search-results"></div>
-            </div>
-            <div class="modal-footer">
-            </div>
-        </div>
-    </div>
-</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
-            </div>
-            <div class="modal-body">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th style="width: 20%;">Keys</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="help shortcut"><kbd>?</kbd></td>
-                    <td>Open this help</td>
-                  </tr>
-                  <tr>
-                    <td class="next shortcut"><kbd>n</kbd></td>
-                    <td>Next page</td>
-                  </tr>
-                  <tr>
-                    <td class="prev shortcut"><kbd>p</kbd></td>
-                    <td>Previous page</td>
-                  </tr>
-                  <tr>
-                    <td class="search shortcut"><kbd>s</kbd></td>
-                    <td>Search</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="modal-footer">
-            </div>
-        </div>
-    </div>
+this as you get started with more complex Javascript.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p>Although it would be a lot nicer if there were actually a
+standard library to speak of.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+</ol>
 </div>
 
-    </body>
+</body>
 </html>

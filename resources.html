@@ -1,199 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-        <meta name="author" content="Michael V. DePalatis">
-        
-        <link rel="shortcut icon" href="img/favicon.ico">
-        <title>Resources - mike.depalatis.net</title>
-        <link href="css/bootstrap-custom.min.css" rel="stylesheet">
-        <link href="css/font-awesome.min.css" rel="stylesheet">
-        <link href="css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/color-brewer.min.css">
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
-
-        <script src="js/jquery-1.10.2.min.js" defer></script>
-        <script src="js/bootstrap-3.0.3.min.js" defer></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-        <script>hljs.initHighlightingOnLoad();</script> 
-    </head>
-
-    <body>
-
-        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-            <div class="container">
-
-                <!-- Collapsed navigation -->
-                <div class="navbar-header">
-                    <!-- Expander button -->
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="index.html">mike.depalatis.net</a>
-                </div>
-
-                <!-- Expanded navigation -->
-                <div class="navbar-collapse collapse">
-                        <!-- Main navigation -->
-                        <ul class="nav navbar-nav">
-                            <li >
-                                <a href="index.html">About</a>
-                            </li>
-                            <li class="active">
-                                <a href="resources.html">Resources</a>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    
-<li >
-    <a href="archives.html">Archives</a>
-</li>
-                                    
-  <li class="dropdown-submenu">
-    <a href="#">2019</a>
-    <ul class="dropdown-menu">
-            
-<li >
-    <a href="blog/sqlalchemy-timestamps.html">Ensuring timestamp storage in UTC with SQLAlchemy</a>
-</li>
-    </ul>
-  </li>
-                                    
-  <li class="dropdown-submenu">
-    <a href="#">2018</a>
-    <ul class="dropdown-menu">
-            
-<li >
-    <a href="blog/conda-kernels.html">Jupyter integration with conda environments</a>
-</li>
-            
-<li >
-    <a href="blog/conda-shortcuts.html">Useful BASH shortcuts for conda</a>
-</li>
-            
-<li >
-    <a href="blog/multiline-lambdas.html">Multiline lambdas</a>
-</li>
-    </ul>
-  </li>
-                                    
-  <li class="dropdown-submenu">
-    <a href="#">2017</a>
-    <ul class="dropdown-menu">
-            
-<li >
-    <a href="blog/ipc-with-sqlite.html">Sharing data between processes with SQLite</a>
-</li>
-    </ul>
-  </li>
-                                    
-  <li class="dropdown-submenu">
-    <a href="#">2016</a>
-    <ul class="dropdown-menu">
-            
-<li >
-    <a href="blog/lmfit.html">Fitting with lmfit</a>
-</li>
-            
-<li >
-    <a href="blog/matplotlib-color-cycle.html">Getting Matplotlib's colors in order</a>
-</li>
-            
-<li >
-    <a href="blog/postgres-time-series-database.html">Using Postgres as a time series database</a>
-</li>
-            
-<li >
-    <a href="blog/simplifying-argparse.html">Simplifying argparse usage with subcommands</a>
-</li>
-            
-<li >
-    <a href="blog/javascript-for-python-programmers.html">Javascript for Python programmers</a>
-</li>
-    </ul>
-  </li>
-                                    
-  <li class="dropdown-submenu">
-    <a href="#">2015</a>
-    <ul class="dropdown-menu">
-            
-<li >
-    <a href="blog/blocking-code-to-tornado-coroutine.html">Running (possibly) blocking code like a Tornado coroutine</a>
-</li>
-            
-<li >
-    <a href="blog/tornado-background-tasks.html">Background tasks with Tornado</a>
-</li>
-            
-<li >
-    <a href="blog/flask-sse-demo.html">Flask and server-sent events</a>
-</li>
-            
-<li >
-    <a href="blog/hg-import-from-another-repo.html">Importing one Mercurial repository into another</a>
-</li>
-    </ul>
-  </li>
-                                    
-  <li class="dropdown-submenu">
-    <a href="#">2014</a>
-    <ul class="dropdown-menu">
-            
-<li >
-    <a href="blog/rpi-usb-ethernet-gateway.html">Raspberry Pi as a USB to Ethernet Gateway</a>
-</li>
-            
-<li >
-    <a href="blog/sudo-ssh-auth.html">ssh-agent for sudo authentication with a passwordless account</a>
-</li>
-            
-<li >
-    <a href="blog/flask-websockets-with-tornado.html">Using websockets with Flask via Tornado</a>
-</li>
-    </ul>
-  </li>
-                                </ul>
-                            </li>
-                        </ul>
-
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
-                                <i class="fa fa-search"></i> Search
-                            </a>
-                        </li>
-                            <li >
-                                <a rel="next" href="index.html">
-                                    <i class="fa fa-arrow-left"></i> Previous
-                                </a>
-                            </li>
-                            <li >
-                                <a rel="prev" href="archives.html">
-                                    Next <i class="fa fa-arrow-right"></i>
-                                </a>
-                            </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
-    <div class="col-md-12" role="main">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resources - mike.depalatis.net</title>
+<link rel="stylesheet" href="/css/inter.css">
+<link rel="stylesheet" href="/css/new.css">
+<link rel="stylesheet" href="/css/codehilite.css">
+</head>
+<body>
+<header>
+<h1>mike.depalatis.net</h1>
+<nav>
+<a href="/index.html">Home</a>
+/
+<a href="/blog/index.html">Articles</a>
+/
+<a href="/resources.html">Resources</a>
+</nav>
+</header>
 
 
-<h1 id="resources">Resources</h1>
-<h2 id="physics-and-math">Physics and Math</h2>
+<h1>Resources</h1>
+<h2>Physics and Math</h2>
 <ul>
 <li><a href="http://mathworld.wolfram.com">MathWorld</a> - An excellent resource for looking up math concepts.</li>
 <li><a href="http://scienceworld.wolfram.com/physics">Eric Weisstein's World of Physics</a> - Similar to
@@ -208,14 +37,14 @@
   book (with inidividual chapters in PDF form).</li>
 <li><a href="http://www.rp-photonics.com/encyclopedia.html">Encyclopedia of Laser Physics and Technology</a></li>
 </ul>
-<h2 id="python">Python</h2>
+<h2>Python</h2>
 <ul>
 <li><a href="http://www.numpy.org">Numpy</a></li>
 <li><a href="http://www.scipy.org/">Scipy</a></li>
 <li><a href="http://matplotlib.org/">Matplotlib</a></li>
 <li><a href="http://www.tornadoweb.org/en/stable/">Tornado</a></li>
 </ul>
-<h2 id="restructuredtext">reStructuredText</h2>
+<h2>reStructuredText</h2>
 <p>I previously used reST for notes and as a plaintext format. I've now
 switched over mostly to <a href="http://daringfireball.net/projects/markdown/">Markdown</a>, but since reST is used
 heavily for Pythonic documentation, it's still good to know.</p>
@@ -225,7 +54,7 @@ heavily for Pythonic documentation, it's still good to know.</p>
 <li><a href="http://docutils.sourceforge.net/docs/ref/rst/directives.html">Directives</a></li>
 <li><a href="http://www.programmerq.net/rsttricks.html">reStructuredText tips and tricks</a></li>
 </ul>
-<h2 id="latex">LaTeX</h2>
+<h2>LaTeX</h2>
 <ul>
 <li><a href="http://www.andy-roberts.net/misc/latex/">Getting to grips with Latex</a> - An excellent introduction to
   LaTeX.</li>
@@ -237,7 +66,7 @@ heavily for Pythonic documentation, it's still good to know.</p>
 <li><a href="http://www.biochem.ucl.ac.uk/~james/latex/">James Bray's Latex Help</a> - Various useful tips with
   selected topics in LaTeX.</li>
 </ul>
-<h2 id="linux">Linux</h2>
+<h2>Linux</h2>
 <ul>
 <li><a href="http://www.debian.org">Debian</a> - The best Linux distribution out there.</li>
 <li><a href="http://seul.org/docs/autotut/">autotut</a> - A guide to using the GNU autotools (autoconf,
@@ -249,7 +78,7 @@ heavily for Pythonic documentation, it's still good to know.</p>
 <li><a href="http://www.pathname.com/fhs/pub/fhs-2.3.html">Filesystem Hierarchy Standard</a> - Information what everything
   in / on your Linux system actually means.</li>
 </ul>
-<h2 id="electronics">Electronics</h2>
+<h2>Electronics</h2>
 <ul>
 <li><a href="http://dangerousprototypes.com/">Dangerous Prototypes</a> - Many interesting open source hardware
   projects</li>
@@ -257,101 +86,24 @@ heavily for Pythonic documentation, it's still good to know.</p>
 <li><a href="http://www.seeedstudio.com">Seeed Studio</a> - Electronics components and cheap PCB fabrication
   (China)</li>
 </ul>
-<h3 id="kicad">KiCAD</h3>
-<h4 id="libraries-and-modules">Libraries and modules</h4>
+<h3>KiCAD</h3>
+<h4>Libraries and modules</h4>
 <ul>
 <li><a href="http://kicadlib.org/">kicadlib.org</a></li>
 <li><a href="http://library.oshec.org/">KiCAD libraries converted from Eagle</a></li>
 </ul>
-<h4 id="howtos">HOWTOs</h4>
+<h4>HOWTOs</h4>
 <ul>
 <li><a href="http://store.curiousinventor.com/guides/kicad/new_components/">Making New Components and Modules (Footprints) in KiCAD</a></li>
 </ul>
-<h3 id="arduino">Arduino</h3>
+<h3>Arduino</h3>
 <ul>
 <li>Ethernet<ul>
 <li><a href="http://www.instructables.com/id/Add-Ethernet-to-any-Arduino-project-for-less-than-/">DIY link 1</a></li>
 <li><a href="http://www.instructables.com/id/A-credit-card-sized-Ethernet-Arduino-compatable-co/">DIY link 2</a></li>
 </ul>
 </li>
-</ul></div>
+</ul>
 
-        </div>
-
-        <footer class="col-md-12">
-            <hr>
-            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
-        </footer>
-        <script>
-            var base_url = ".",
-                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
-        </script>
-        <script src="js/base.js" defer></script>
-        <script src="search/main.js" defer></script>
-
-        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
-            </div>
-            <div class="modal-body">
-                <p>
-                    From here you can search these documents. Enter
-                    your search terms below.
-                </p>
-                <form role="form">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
-                    </div>
-                </form>
-                <div id="mkdocs-search-results"></div>
-            </div>
-            <div class="modal-footer">
-            </div>
-        </div>
-    </div>
-</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
-            </div>
-            <div class="modal-body">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th style="width: 20%;">Keys</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="help shortcut"><kbd>?</kbd></td>
-                    <td>Open this help</td>
-                  </tr>
-                  <tr>
-                    <td class="next shortcut"><kbd>n</kbd></td>
-                    <td>Next page</td>
-                  </tr>
-                  <tr>
-                    <td class="prev shortcut"><kbd>p</kbd></td>
-                    <td>Previous page</td>
-                  </tr>
-                  <tr>
-                    <td class="search shortcut"><kbd>s</kbd></td>
-                    <td>Search</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="modal-footer">
-            </div>
-        </div>
-    </div>
-</div>
-
-    </body>
+</body>
 </html>

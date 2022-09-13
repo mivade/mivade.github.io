@@ -1,199 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-        <meta name="author" content="Michael V. DePalatis">
-        
-        <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Using Postgres as a time series database - mike.depalatis.net</title>
-        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
-        <link href="../css/font-awesome.min.css" rel="stylesheet">
-        <link href="../css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/color-brewer.min.css">
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
-
-        <script src="../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../js/bootstrap-3.0.3.min.js" defer></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-        <script>hljs.initHighlightingOnLoad();</script> 
-    </head>
-
-    <body>
-
-        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-            <div class="container">
-
-                <!-- Collapsed navigation -->
-                <div class="navbar-header">
-                    <!-- Expander button -->
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="../index.html">mike.depalatis.net</a>
-                </div>
-
-                <!-- Expanded navigation -->
-                <div class="navbar-collapse collapse">
-                        <!-- Main navigation -->
-                        <ul class="nav navbar-nav">
-                            <li >
-                                <a href="../index.html">About</a>
-                            </li>
-                            <li >
-                                <a href="../resources.html">Resources</a>
-                            </li>
-                            <li class="dropdown active">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    
-<li >
-    <a href="../archives.html">Archives</a>
-</li>
-                                    
-  <li class="dropdown-submenu">
-    <a href="#">2019</a>
-    <ul class="dropdown-menu">
-            
-<li >
-    <a href="sqlalchemy-timestamps.html">Ensuring timestamp storage in UTC with SQLAlchemy</a>
-</li>
-    </ul>
-  </li>
-                                    
-  <li class="dropdown-submenu">
-    <a href="#">2018</a>
-    <ul class="dropdown-menu">
-            
-<li >
-    <a href="conda-kernels.html">Jupyter integration with conda environments</a>
-</li>
-            
-<li >
-    <a href="conda-shortcuts.html">Useful BASH shortcuts for conda</a>
-</li>
-            
-<li >
-    <a href="multiline-lambdas.html">Multiline lambdas</a>
-</li>
-    </ul>
-  </li>
-                                    
-  <li class="dropdown-submenu">
-    <a href="#">2017</a>
-    <ul class="dropdown-menu">
-            
-<li >
-    <a href="ipc-with-sqlite.html">Sharing data between processes with SQLite</a>
-</li>
-    </ul>
-  </li>
-                                    
-  <li class="dropdown-submenu">
-    <a href="#">2016</a>
-    <ul class="dropdown-menu">
-            
-<li >
-    <a href="lmfit.html">Fitting with lmfit</a>
-</li>
-            
-<li >
-    <a href="matplotlib-color-cycle.html">Getting Matplotlib's colors in order</a>
-</li>
-            
-<li class="active">
-    <a href="postgres-time-series-database.html">Using Postgres as a time series database</a>
-</li>
-            
-<li >
-    <a href="simplifying-argparse.html">Simplifying argparse usage with subcommands</a>
-</li>
-            
-<li >
-    <a href="javascript-for-python-programmers.html">Javascript for Python programmers</a>
-</li>
-    </ul>
-  </li>
-                                    
-  <li class="dropdown-submenu">
-    <a href="#">2015</a>
-    <ul class="dropdown-menu">
-            
-<li >
-    <a href="blocking-code-to-tornado-coroutine.html">Running (possibly) blocking code like a Tornado coroutine</a>
-</li>
-            
-<li >
-    <a href="tornado-background-tasks.html">Background tasks with Tornado</a>
-</li>
-            
-<li >
-    <a href="flask-sse-demo.html">Flask and server-sent events</a>
-</li>
-            
-<li >
-    <a href="hg-import-from-another-repo.html">Importing one Mercurial repository into another</a>
-</li>
-    </ul>
-  </li>
-                                    
-  <li class="dropdown-submenu">
-    <a href="#">2014</a>
-    <ul class="dropdown-menu">
-            
-<li >
-    <a href="rpi-usb-ethernet-gateway.html">Raspberry Pi as a USB to Ethernet Gateway</a>
-</li>
-            
-<li >
-    <a href="sudo-ssh-auth.html">ssh-agent for sudo authentication with a passwordless account</a>
-</li>
-            
-<li >
-    <a href="flask-websockets-with-tornado.html">Using websockets with Flask via Tornado</a>
-</li>
-    </ul>
-  </li>
-                                </ul>
-                            </li>
-                        </ul>
-
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
-                                <i class="fa fa-search"></i> Search
-                            </a>
-                        </li>
-                            <li >
-                                <a rel="next" href="matplotlib-color-cycle.html">
-                                    <i class="fa fa-arrow-left"></i> Previous
-                                </a>
-                            </li>
-                            <li >
-                                <a rel="prev" href="simplifying-argparse.html">
-                                    Next <i class="fa fa-arrow-right"></i>
-                                </a>
-                            </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
-    <div class="col-md-12" role="main">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Using Postgres as a time series database - mike.depalatis.net</title>
+<link rel="stylesheet" href="/css/inter.css">
+<link rel="stylesheet" href="/css/new.css">
+<link rel="stylesheet" href="/css/codehilite.css">
+</head>
+<body>
+<header>
+<h1>mike.depalatis.net</h1>
+<nav>
+<a href="/index.html">Home</a>
+/
+<a href="/blog/index.html">Articles</a>
+/
+<a href="/resources.html">Resources</a>
+</nav>
+</header>
 
 
 <h1>Using Postgres as a time series database</h1>
-
 <p>Time series databases (TSDBs) are quite popular these days. To name a
 few, there are <a href="https://influxdata.com/time-series-platform/influxdb/">InfluxDB</a>, <a href="https://graphite.readthedocs.io/en/latest/">Graphite</a>, <a href="http://druid.io/">Druid</a>, <a href="https://kairosdb.github.io/">Kairos</a>, and
 <a href="https://prometheus.io/">Prometheus</a>. All aim to optimize data storage and querying for
@@ -224,7 +52,7 @@ RDBMS over a newfangled TSDB. To name a few:</p>
 for storing time series data. In particular, I will focus on Postgres,
 but the same general principles apply to other dialects. Sample code for
 some examples can be found on <a href="https://gitlab.com/mivade/postgres-timeseries">GitLab</a>.</p>
-<h2 id="schema-definition">Schema definition</h2>
+<h2>Schema definition</h2>
 <p>One "disadvantage" to SQL is it traditionally requires tightly defined
 schema.  In practice when logging time series data, this is not
 usually a problem since each measurement device can neatly have its
@@ -246,9 +74,9 @@ timestamp (of course), a name or unique ID of the sensor, and a
 temperature measurement. For good measure, we should also add a
 primary key ID column to make a grand total of four columns. So far,
 our table looks like this:</p>
-<pre><code> id |           timestamp           |  sensor   | temperature
+<div class="codehilite"><pre><span></span><code> id |           timestamp           |  sensor   | temperature
 ----+-------------------------------+-----------+-------------
-</code></pre>
+</code></pre></div>
 
 <p>For the <code>timestamp</code> column, I highly recommend using <code>TIMESTAMP WITH
 TIME ZONE</code> rather than <code>TIMESTAMP WITHOUT TIME ZONE</code> (more on why
@@ -258,19 +86,19 @@ later).</p>
 sense to make a combined index on both, but we can defer this decision
 to later if it becomes necessary. Using <a href="http://www.sqlalchemy.org/">SQLAlchemy</a>, we define our
 table like this:</p>
-<pre><code class="python">metadata = sa.MetaData()
-table = sa.Table(
-    'timeseries', metadata,
-    sa.Column('id', sa.Integer, primary_key=True),
-    sa.Column('timestamp', sa.DateTime(timezone=True),
-              nullable=False, index=True),
-    sa.Column('sensor', sa.String(length=128), nullable=False, index=True),
-    sa.Column('temperature', sa.Float(precision=4), nullable=False))
-metadata.create_all(bind=engine)
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="n">metadata</span> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">MetaData</span><span class="p">()</span>
+<span class="n">table</span> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">Table</span><span class="p">(</span>
+    <span class="s1">&#39;timeseries&#39;</span><span class="p">,</span> <span class="n">metadata</span><span class="p">,</span>
+    <span class="n">sa</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="n">sa</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="n">sa</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="s1">&#39;timestamp&#39;</span><span class="p">,</span> <span class="n">sa</span><span class="o">.</span><span class="n">DateTime</span><span class="p">(</span><span class="n">timezone</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+              <span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="n">sa</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="s1">&#39;sensor&#39;</span><span class="p">,</span> <span class="n">sa</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="n">length</span><span class="o">=</span><span class="mi">128</span><span class="p">),</span> <span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="n">sa</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="s1">&#39;temperature&#39;</span><span class="p">,</span> <span class="n">sa</span><span class="o">.</span><span class="n">Float</span><span class="p">(</span><span class="n">precision</span><span class="o">=</span><span class="mi">4</span><span class="p">),</span> <span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+<span class="n">metadata</span><span class="o">.</span><span class="n">create_all</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="n">engine</span><span class="p">)</span>
+</code></pre></div>
 
 <p>which results in the following SQL:</p>
-<pre><code class="pgsql">CREATE TABLE timeseries (
+<div class="codehilite"><pre><span></span><code>CREATE TABLE timeseries (
     id SERIAL NOT NULL,
     timestamp TIMESTAMP WITH TIME ZONE NOT NULL,
     sensor VARCHAR(128) NOT NULL,
@@ -279,26 +107,26 @@ metadata.create_all(bind=engine)
 );
 CREATE INDEX ix_timeseries_sensor ON timeseries (sensor);
 CREATE INDEX ix_timeseries_timestamp ON timeseries (timestamp);
-</code></pre>
+</code></pre></div>
 
-<h2 id="basic-querying">Basic querying</h2>
+<h2>Basic querying</h2>
 <p>Simple queries are performed as normal:</p>
-<pre><code class="pgsql">SELECT * FROM timeseries WHERE sensor = 'sensor_01';
-</code></pre>
+<div class="codehilite"><pre><span></span><code>SELECT * FROM timeseries WHERE sensor = &#39;sensor_01&#39;;
+</code></pre></div>
 
 <p>Postgres has quite a few
 <a href="https://www.postgresql.org/docs/9.1/static/functions-datetime.html">date and time functions</a>
 for building more complicated queries. It understands <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> out
 of the box:</p>
-<pre><code class="pgsql">test=&gt; SELECT * FROM timeseries
-test-&gt; WHERE timestamp &gt; '2016-06-13T22:00+02'
-test-&gt; AND sensor = 'sensor_01';
- id |           timestamp           |  sensor   | temperature
-----+-------------------------------+-----------+-------------
-  8 | 2016-06-14 23:18:16.149606+02 | sensor_01 |     22.7061
-  4 | 2016-06-14 23:18:11.985645+02 | sensor_01 |     25.4643
-(2 rows)
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="nt">test</span><span class="o">=&gt;</span><span class="w"> </span><span class="nt">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nt">FROM</span><span class="w"> </span><span class="nt">timeseries</span><span class="w"></span>
+<span class="nt">test-</span><span class="o">&gt;</span><span class="w"> </span><span class="nt">WHERE</span><span class="w"> </span><span class="nt">timestamp</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="s1">&#39;2016-06-13T22:00+02&#39;</span><span class="w"></span>
+<span class="nt">test-</span><span class="o">&gt;</span><span class="w"> </span><span class="nt">AND</span><span class="w"> </span><span class="nt">sensor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;sensor_01&#39;</span><span class="o">;</span><span class="w"></span>
+<span class="w"> </span><span class="nt">id</span><span class="w"> </span><span class="o">|</span><span class="w">           </span><span class="nt">timestamp</span><span class="w">           </span><span class="o">|</span><span class="w">  </span><span class="nt">sensor</span><span class="w">   </span><span class="o">|</span><span class="w"> </span><span class="nt">temperature</span><span class="w"></span>
+<span class="nt">----</span><span class="o">+</span><span class="nt">-------------------------------</span><span class="o">+</span><span class="nt">-----------</span><span class="o">+</span><span class="nt">-------------</span><span class="w"></span>
+<span class="w">  </span><span class="nt">8</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nt">2016-06-14</span><span class="w"> </span><span class="nt">23</span><span class="p">:</span><span class="nd">18</span><span class="p">:</span><span class="nd">16</span><span class="p">.</span><span class="nc">149606</span><span class="o">+</span><span class="nt">02</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nt">sensor_01</span><span class="w"> </span><span class="o">|</span><span class="w">     </span><span class="nt">22</span><span class="p">.</span><span class="nc">7061</span><span class="w"></span>
+<span class="w">  </span><span class="nt">4</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nt">2016-06-14</span><span class="w"> </span><span class="nt">23</span><span class="p">:</span><span class="nd">18</span><span class="p">:</span><span class="nd">11</span><span class="p">.</span><span class="nc">985645</span><span class="o">+</span><span class="nt">02</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nt">sensor_01</span><span class="w"> </span><span class="o">|</span><span class="w">     </span><span class="nt">25</span><span class="p">.</span><span class="nc">4643</span><span class="w"></span>
+<span class="o">(</span><span class="nt">2</span><span class="w"> </span><span class="nt">rows</span><span class="o">)</span><span class="w"></span>
+</code></pre></div>
 
 <p>Here we are explicit with the UTC offset of +2 hours (CEST). If
 omitted, the server locale is assumed. This brings us to why we should
@@ -314,31 +142,31 @@ to get confusing. To avoid this problem, the best solution I have
 found is to <strong>always</strong> declare columns as <code>TIMESTAMP WITH TIME ZONE</code>
 (<code>DateTime(timezone=True)</code> in SQLAlchemy terms) and explicitly. So
 rather than inserting new timestamps with</p>
-<pre><code class="python">from datetime import datetime
-# ...
-timestamp = datetime.now()
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="c1"># ...</span>
+<span class="n">timestamp</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+</code></pre></div>
 
 <p>instead prefer</p>
-<pre><code class="python">from datetime import datetime, timezone
-# ...
-timestamp = datetime.now(timezone.utc)
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timezone</span>
+<span class="c1"># ...</span>
+<span class="n">timestamp</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span>
+</code></pre></div>
 
 <p><em>Aside: why oh why doesn't <code>datetime.utcnow</code> just do this?</em></p>
 <p>Now we can build queries in Python like this using pandas and raw SQL
 queries:</p>
-<pre><code class="python">today = datetime.now(timezone.utc)
-today = today.replace(hour=0, minute=0, second=0, microsecond=0)
-query = (
-    &quot;SELECT * FROM timeseries &quot; +
-    &quot;WHERE timestamp &gt;= '{}' &quot;.format(today.isoformat()) +
-    &quot;AND sensor = 'sensor_01'&quot;
-)
-df = pd.read_sql_query(query, engine, index_col=&quot;timestamp&quot;)
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="n">today</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span>
+<span class="n">today</span> <span class="o">=</span> <span class="n">today</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">hour</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">minute</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">second</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">microsecond</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">query</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s2">&quot;SELECT * FROM timeseries &quot;</span> <span class="o">+</span>
+    <span class="s2">&quot;WHERE timestamp &gt;= &#39;</span><span class="si">{}</span><span class="s2">&#39; &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">today</span><span class="o">.</span><span class="n">isoformat</span><span class="p">())</span> <span class="o">+</span>
+    <span class="s2">&quot;AND sensor = &#39;sensor_01&#39;&quot;</span>
+<span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql_query</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">engine</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s2">&quot;timestamp&quot;</span><span class="p">)</span>
+</code></pre></div>
 
-<h2 id="data-aggregation">Data aggregation</h2>
+<h2>Data aggregation</h2>
 <p>Depending on data density, it may be useful to downsample data and look
 at aggregates such as the mean temperature in half-hour windows over the
 course of a day. We can easily accomplish this after the fact with
@@ -352,18 +180,18 @@ good treatment).</p>
 <p>The key here is to use the <code>date_trunc</code> aggregate function and
 <code>GROUP BY</code> to only look at (for example) one hour at a time. An example
 of an aggregate query:</p>
-<pre><code class="pgsql">SELECT
-  date_trunc('hour', timestamp) AS timestamp,
+<div class="codehilite"><pre><span></span><code>SELECT
+  date_trunc(&#39;hour&#39;, timestamp) AS timestamp,
   avg(temperature) AS temperature
 FROM timeseries
-WHERE timestamp &gt;= '2016-06-25'
-AND sensor = 'sensor_01'
-GROUP BY date_trunc('hour', timestamp)
+WHERE timestamp &gt;= &#39;2016-06-25&#39;
+AND sensor = &#39;sensor_01&#39;
+GROUP BY date_trunc(&#39;hour&#39;, timestamp)
 ORDER BY timestamp;
-</code></pre>
+</code></pre></div>
 
 <p>which results in something like:</p>
-<pre><code>timestamp        |   temperature
+<div class="codehilite"><pre><span></span><code>timestamp        |   temperature
 ------------------------+------------------
 2016-06-25 00:00:00+02 | 22.0828623312065
 2016-06-25 01:00:00+02 | 22.0026334276975
@@ -384,9 +212,9 @@ ORDER BY timestamp;
 2016-06-25 16:00:00+02 | 21.9082782661007
 2016-06-25 17:00:00+02 | 21.4403478373652
 (18 rows)
-</code></pre>
+</code></pre></div>
 
-<h2 id="other-strategies">Other strategies</h2>
+<h2>Other strategies</h2>
 <p>Another approach to avoid the time zone issue entirely is to simply
 store timestamps using something like UNIX time. Since pretty much every
 programming language imaginable has a built-in function to return time
@@ -402,88 +230,11 @@ effectively do aggregation (somewhat) automatically rather than by
 query. This could also mean a bit of extra work when inserting new data
 or getting data stored in the database into a form friendly to your data
 analysis tools of choice.</p>
-<h2 id="references-and-further-reading">References and further reading</h2>
+<h2>References and further reading</h2>
 <ul>
 <li><a href="https://no0p.github.io/postgresql/2014/05/08/timeseries-tips-pg.html">Querying Time Series in Postgresql</a></li>
 <li><a href="https://hashrocket.com/blog/posts/materialized-view-strategies-using-postgresql">Materialized View Strategies Using PostgreSQL</a></li>
-</ul></div>
+</ul>
 
-        </div>
-
-        <footer class="col-md-12">
-            <hr>
-            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
-        </footer>
-        <script>
-            var base_url = "..",
-                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
-        </script>
-        <script src="../js/base.js" defer></script>
-        <script src="../search/main.js" defer></script>
-
-        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
-            </div>
-            <div class="modal-body">
-                <p>
-                    From here you can search these documents. Enter
-                    your search terms below.
-                </p>
-                <form role="form">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
-                    </div>
-                </form>
-                <div id="mkdocs-search-results"></div>
-            </div>
-            <div class="modal-footer">
-            </div>
-        </div>
-    </div>
-</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
-            </div>
-            <div class="modal-body">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th style="width: 20%;">Keys</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="help shortcut"><kbd>?</kbd></td>
-                    <td>Open this help</td>
-                  </tr>
-                  <tr>
-                    <td class="next shortcut"><kbd>n</kbd></td>
-                    <td>Next page</td>
-                  </tr>
-                  <tr>
-                    <td class="prev shortcut"><kbd>p</kbd></td>
-                    <td>Previous page</td>
-                  </tr>
-                  <tr>
-                    <td class="search shortcut"><kbd>s</kbd></td>
-                    <td>Search</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="modal-footer">
-            </div>
-        </div>
-    </div>
-</div>
-
-    </body>
+</body>
 </html>
