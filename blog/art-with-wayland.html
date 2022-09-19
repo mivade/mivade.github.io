@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Using ART with Wayland - mike.depalatis.net</title>
+<link rel="stylesheet" href="/css/inter.css">
+<link rel="stylesheet" href="/css/new.css">
+<link rel="stylesheet" href="/css/codehilite.css">
+</head>
+<body>
+<header>
+<h1>mike.depalatis.net</h1>
+<nav>
+<a href="/index.html">Home</a>
+/
+<a href="/blog/index.html">Articles</a>
+/
+<a href="/resources.html">Resources</a>
+</nav>
+</header>
+
+
+<h1>Using ART with Wayland</h1>
+<p>Lately I've been experimenting with using
+<a href="https://bitbucket.org/agriggio/art/wiki/Home">ART</a>, a raw photo editing
+application which is a fork of <a href="http://rawtherapee.com/">RawTherapee</a>. Compared
+to the excellent <a href="https://www.darktable.org/">Darktable</a>, ART has a slightly
+easier learning curve and can yield decent results pretty quickly. The binaries
+provided for Linux however do not work on
+<a href="https://en.wikipedia.org/wiki/Wayland_(display_server_protocol)">Wayland</a> and
+the official recommendation is to build binaries yourself. Luckily there is a
+much easier workaround by setting the <code>GDK_BACKEND</code> environment variable:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">GDK_BACKEND</span><span class="o">=</span><span class="n">x11</span> <span class="p">.</span><span class="o">/</span><span class="n">ART</span>
+</code></pre></div>
+
+</body>
+</html>
