@@ -1,74 +1,163 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Raspberry Pi as a USB to Ethernet Gateway - mike.depalatis.net</title>
-<link rel="stylesheet" href="/css/inter.css">
-<link rel="stylesheet" href="/css/new.css">
-<link rel="stylesheet" href="/css/codehilite.css">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2014-03-08">
+
+<title>mike.depalatis.net - Raspberry Pi as a USB to Ethernet Gateway</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
 </head>
-<body>
-<header>
-<h1>mike.depalatis.net</h1>
-<nav>
-<a href="/index.html">Home</a>
-/
-<a href="/blog/index.html">Articles</a>
-/
-<a href="/resources.html">Resources</a>
-</nav>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">mike.depalatis.net</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../blog/index.html">
+ <span class="menu-text">Articles</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../resources.html">
+ <span class="menu-text">Resources</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/mivade"><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+              <div class="quarto-toggle-container">
+                  <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+              </div>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Raspberry Pi as a USB to Ethernet Gateway</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">March 8, 2014</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
 </header>
 
-
-<h1>Raspberry Pi as a USB to Ethernet Gateway</h1>
-<h2>Introduction</h2>
-<p>One of the most convenient ways of communicating with experimental
-devices (such as oscilloscopes, frequency generators, pulse
-generators, etc.) is via ethernet. The advantages of this over other
-forms of communication such as GPIB, RS-232 serial ports, etc., is
-that, provided the device receives a fixed IP address or some sort of
-dynamic DNS service is used, it doesn't matter where it is located and
-specialty cabling can be kept to a minimum. Luckily, most of these
-devices, even if they are not equipped with ethernet capability, can
-be made to work over ethernet with some sort of device server (e.g.,
-there are device servers such as those made by <a href="http://www.moxa.com/product/Serial_Device_Servers.htm">Moxa</a> which can
-"convert" RS-232 serial port communications to ethernet).</p>
-<p>A lot of modern devices come equipped with a USB port on the back
-which complies with the <a href="http://www.usb.org/developers/devclass_docs">USBTMC</a> (USB test and measurement class)
-specifications. Even fairly inexpensive equipment which lacks an
-ethernet port are likely to have a USB port for USBTMC communications
-(e.g., the popular and inexpensive <a href="http://www.rigolna.com/products/digital-oscilloscopes/ds1000d/">Rigol DS1000D series</a>
-digital oscilloscopes). There exists a USBTMC Linux
-<a href="http://www.home.agilent.com/upload/cmc_upload/All/usbtmc.html">kernel module</a> which allows for communication with
-USBTMC devices via /dev/usbtmcNNN device files. This module, coupled
-with the versatile <code>socat</code> command, can thus allow for transparent
-communications over ethernet with a USBTMC device as if it were
-connected via ethernet itself. The rest of this note describes the
-process for using a Raspberry Pi as a USBTMC to ethernet adapter.</p>
-<h2>Compiling the RPi kernel</h2>
-<p>The RPi's default kernel does not include USBTMC support as a module
-or built into the kernel. This requires building from scratch, the
-full details of which can be found <a href="http://elinux.org/RPi_Kernel_Compilation">here</a>. The basic idea
-is to grab the RPi kernel source on a fast computer and cross compile
-it with the USBTMC kernel module<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> (or build into the kernel if
-you prefer).</p>
-<p>There are a few caveats and pitfalls, so the following provides the
-step-by-step approach that worked for me. To get started on a 64-bit
-Linux machine, make sure you have the 32-bit libraries
-installed. <a href="https://groups.google.com/d/msg/comp.sys.raspberry-pi/ONzkoIV9ab8/E4wejOI51WwJ">On Debian and derivatives</a>:</p>
-<div class="codehilite"><pre><span></span><code>sudo  dpkg  --add-architecture  i386 # enable multi-arch
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>One of the most convenient ways of communicating with experimental devices (such as oscilloscopes, frequency generators, pulse generators, etc.) is via ethernet. The advantages of this over other forms of communication such as GPIB, RS-232 serial ports, etc., is that, provided the device receives a fixed IP address or some sort of dynamic DNS service is used, it doesn’t matter where it is located and specialty cabling can be kept to a minimum. Luckily, most of these devices, even if they are not equipped with ethernet capability, can be made to work over ethernet with some sort of device server (e.g., there are device servers such as those made by <a href="http://www.moxa.com/product/Serial_Device_Servers.htm">Moxa</a> which can “convert” RS-232 serial port communications to ethernet).</p>
+<p>A lot of modern devices come equipped with a USB port on the back which complies with the <a href="http://www.usb.org/developers/devclass_docs">USBTMC</a> (USB test and measurement class) specifications. Even fairly inexpensive equipment which lacks an ethernet port are likely to have a USB port for USBTMC communications (e.g., the popular and inexpensive <a href="http://www.rigolna.com/products/digital-oscilloscopes/ds1000d/">Rigol DS1000D series</a> digital oscilloscopes). There exists a USBTMC Linux <a href="http://www.home.agilent.com/upload/cmc_upload/All/usbtmc.html">kernel module</a> which allows for communication with USBTMC devices via /dev/usbtmcNNN device files. This module, coupled with the versatile <code>socat</code> command, can thus allow for transparent communications over ethernet with a USBTMC device as if it were connected via ethernet itself. The rest of this note describes the process for using a Raspberry Pi as a USBTMC to ethernet adapter.</p>
+</section>
+<section id="compiling-the-rpi-kernel" class="level2">
+<h2 class="anchored" data-anchor-id="compiling-the-rpi-kernel">Compiling the RPi kernel</h2>
+<p>The RPi’s default kernel does not include USBTMC support as a module or built into the kernel. This requires building from scratch, the full details of which can be found <a href="http://elinux.org/RPi_Kernel_Compilation">here</a>. The basic idea is to grab the RPi kernel source on a fast computer and cross compile it with the USBTMC kernel module<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> (or build into the kernel if you prefer).</p>
+<p>There are a few caveats and pitfalls, so the following provides the step-by-step approach that worked for me. To get started on a 64-bit Linux machine, make sure you have the 32-bit libraries installed. <a href="https://groups.google.com/d/msg/comp.sys.raspberry-pi/ONzkoIV9ab8/E4wejOI51WwJ">On Debian and derivatives</a>:</p>
+<pre><code>sudo  dpkg  --add-architecture  i386 # enable multi-arch
 sudo  apt-get  update
-sudo  apt-get  install  ia32-libs
-</code></pre></div>
-
+sudo  apt-get  install  ia32-libs</code></pre>
 <p>Once this is done, the following steps will get things working:</p>
-<h3>Get the RPi kernel source:</h3>
-<div class="codehilite"><pre><span></span><code>git init
-git clone --depth 1 git://github.com/raspberrypi/linux.git
-</code></pre></div>
-
-<h3>Get the compiler for cross-compiling:</h3>
+<section id="get-the-rpi-kernel-source" class="level3">
+<h3 class="anchored" data-anchor-id="get-the-rpi-kernel-source">Get the RPi kernel source:</h3>
+<pre><code>git init
+git clone --depth 1 git://github.com/raspberrypi/linux.git</code></pre>
+</section>
+<section id="get-the-compiler-for-cross-compiling" class="level3">
+<h3 class="anchored" data-anchor-id="get-the-compiler-for-cross-compiling">Get the compiler for cross-compiling:</h3>
 <p><code>git clone git://github.com/raspberrypi/tools.git</code></p>
 <ul>
 <li>Compile the kernel</li>
@@ -77,80 +166,324 @@ git clone --depth 1 git://github.com/raspberrypi/linux.git
 <p><code>make mrproper</code></p>
 <p>Next, copy the default configuration file:</p>
 <p><code>cp arch/arm/configs/bcmrpi_defconfig .config</code></p>
-<p>Select the appropriate compiler to use by defining an environment
-variable that points to the right place (TODO: put the right thing
-here):</p>
+<p>Select the appropriate compiler to use by defining an environment variable that points to the right place (TODO: put the right thing here):</p>
 <p><code>export CCPREFIX=/path/to/your/compiler/binary/prefix-of-binary-</code></p>
 <p>Pre-configure everything and <a href="http://serverfault.com/a/116317">accept the defaults</a>:</p>
 <p><code>yes "" | make oldconfig</code></p>
-<p>Now we can enable building of the usbtmc kernel module. Run <code>make
-menuconfig</code>.</p>
-<p>Navigate to <code>Device Drivers &gt; USB support &gt; USB Test and Measurement
-Class support</code> and make sure it is marked <code>M</code> to build a module. Save
-the configuration file, then exit. Now build the kernel:</p>
+<p>Now we can enable building of the usbtmc kernel module. Run <code>make menuconfig</code>.</p>
+<p>Navigate to <code>Device Drivers &gt; USB support &gt; USB Test and Measurement Class support</code> and make sure it is marked <code>M</code> to build a module. Save the configuration file, then exit. Now build the kernel:</p>
 <p><code>make ARCH=arm CROSS_COMPILE=${CCPREFIX} -jN</code></p>
-<p>where <code>N</code> is the number of CPU cores + 1 (e.g., if there are 4 cores,
-N = 5). This step will take several minutes on a reasonably fast
-computer. Next build the modules:</p>
+<p>where <code>N</code> is the number of CPU cores + 1 (e.g., if there are 4 cores, N = 5). This step will take several minutes on a reasonably fast computer. Next build the modules:</p>
 <p><code>make ARCH=arm CROSS_COMPILE=${CCPREFIX} modules</code></p>
-<h3>Transferring the kernel:</h3>
+</section>
+<section id="transferring-the-kernel" class="level3">
+<h3 class="anchored" data-anchor-id="transferring-the-kernel">Transferring the kernel:</h3>
 <p>First copy to the RPi:</p>
 <p><code>scp arch/arm/boot/Image pi@yourpi:kernel_someuniqueid.img</code></p>
 <p>Then on the RPi, copy this over to <code>/boot</code>:</p>
 <p><code>sudo cp kernel_someuniqueid.img /boot</code></p>
-<p>Edit the bootloader configuration file to use the new kernel by making
-sure the following line appears:</p>
+<p>Edit the bootloader configuration file to use the new kernel by making sure the following line appears:</p>
 <p><code>kernel=kernel_someuniqueid.img</code></p>
 <p>and comment out any other <code>kernel=...</code> lines.</p>
-<h3>Transferring the kernel modules:</h3>
-<p>On the build machine, make a temporary directory to install modules
-to:</p>
-<div class="codehilite"><pre><span></span><code><span class="n">mkdir</span><span class="w"> </span><span class="o">~/</span><span class="n">modules</span><span class="w"></span>
-<span class="k">export</span><span class="w"> </span><span class="n">MODULES_TEMP</span><span class="o">=~/</span><span class="n">modules</span><span class="w"></span>
-</code></pre></div>
-
+</section>
+<section id="transferring-the-kernel-modules" class="level3">
+<h3 class="anchored" data-anchor-id="transferring-the-kernel-modules">Transferring the kernel modules:</h3>
+<p>On the build machine, make a temporary directory to install modules to:</p>
+<pre><code>mkdir ~/modules
+export MODULES_TEMP=~/modules</code></pre>
 <p>In the build directory:</p>
-<p><code>make ARCH=arm CROSS_COMPILE=${CCPREFIX}
-INSTALL_MOD_PATH=${MODULES_TEMP} modules_install</code></p>
-<p>Now in the temporary directory, there should be a <code>lib</code> directory. We
-don't need the source/headers, so remove them (otherwise you might run
-out of space on the RPi SD card!). Transfer these over to the RPi:</p>
+<p><code>make ARCH=arm CROSS_COMPILE=${CCPREFIX} INSTALL_MOD_PATH=${MODULES_TEMP} modules_install</code></p>
+<p>Now in the temporary directory, there should be a <code>lib</code> directory. We don’t need the source/headers, so remove them (otherwise you might run out of space on the RPi SD card!). Transfer these over to the RPi:</p>
 <p><code>scp -r lib pi@yourpi:</code></p>
 <p>On the RPi, copy and overwrite the contents of <code>lib</code> into <code>/lib</code>:</p>
 <p><code>sudo cp -f lib/* /lib</code></p>
-<p><em>Only do this step while running a different version of the kernel
- than what you compiled!</em></p>
-<h3>Reboot.</h3>
-<h3>Load the module:</h3>
+<p><em>Only do this step while running a different version of the kernel than what you compiled!</em></p>
+</section>
+<section id="reboot." class="level3">
+<h3 class="anchored" data-anchor-id="reboot.">Reboot.</h3>
+</section>
+<section id="load-the-module" class="level3">
+<h3 class="anchored" data-anchor-id="load-the-module">Load the module:</h3>
 <p><code>sudo modprobe usbtmc</code></p>
-<h3>Connect the USB device.</h3>
+</section>
+<section id="connect-the-usb-device." class="level3">
+<h3 class="anchored" data-anchor-id="connect-the-usb-device.">Connect the USB device.</h3>
 <p>There should now be a device named <code>/dev/usbtmc0</code>.</p>
-<h2>Talking to the device</h2>
-<p>A Python script for piping data to and from a USBTMC device can be
-found <a href="https://gist.github.com/mivade/112ef2087238662441ab">here</a>. It
-should be run through <code>socat</code> which does the more difficult work of
-properly transferring packets. The <code>socat</code> command I use is</p>
-<div class="codehilite"><pre><span></span><code><span class="nv">socat</span><span class="w"> </span><span class="nv">tcp</span><span class="o">-</span><span class="nv">listen</span>:<span class="mi">5025</span>,<span class="nv">fork</span>,<span class="nv">reuseaddr</span>,<span class="nv">crnl</span>,<span class="nv">tcpwrap</span><span class="o">=</span><span class="nv">script</span>\<span class="w"></span>
-<span class="w">    </span><span class="k">EXEC</span>:<span class="s2">&quot;python usbtmc_pipe.py&quot;</span>,<span class="nv">su</span><span class="o">-</span><span class="nv">d</span><span class="o">=</span><span class="nv">pi</span>,<span class="nv">pty</span>,<span class="nv">echo</span><span class="o">=</span><span class="mi">0</span><span class="w"></span>
-</code></pre></div>
+</section>
+</section>
+<section id="talking-to-the-device" class="level2">
+<h2 class="anchored" data-anchor-id="talking-to-the-device">Talking to the device</h2>
+<p>A Python script for piping data to and from a USBTMC device can be found <a href="https://gist.github.com/mivade/112ef2087238662441ab">here</a>. It should be run through <code>socat</code> which does the more difficult work of properly transferring packets. The <code>socat</code> command I use is</p>
+<pre><code>socat tcp-listen:5025,fork,reuseaddr,crnl,tcpwrap=script\
+    EXEC:"python usbtmc_pipe.py",su-d=pi,pty,echo=0</code></pre>
+</section>
+<section id="other-notes" class="level2">
+<h2 class="anchored" data-anchor-id="other-notes">Other notes</h2>
+<p>It turns out that it is not necessary to use the kernel module to talk to USBTMC devices. A <a href="http://alexforencich.com/wiki/en/python-usbtmc/start">pure Python</a> implementation of using the USBTMC protocol also exists. This has the advantage of not requiring a custom kernel for the RPi, but it adds the slight complexity of needing to specify vendor and product IDs.</p>
+<section id="footnotes" class="level3">
+<h3 class="anchored" data-anchor-id="footnotes">Footnotes</h3>
 
-<h2>Other notes</h2>
-<p>It turns out that it is not necessary to use the kernel module to talk
-to USBTMC devices. A <a href="http://alexforencich.com/wiki/en/python-usbtmc/start">pure Python</a> implementation of using the
-USBTMC protocol also exists. This has the advantage of not requiring a
-custom kernel for the RPi, but it adds the slight complexity of
-needing to specify vendor and product IDs.</p>
-<h3>Footnotes</h3>
-<div class="footnote">
-<hr>
+
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
 <ol>
-<li id="fn:1">
-<p>In the <code>make menuconfig</code> configuration menus, the option can be
-  found under <code>Device Drivers &gt; USB support &gt; USB Test and
-  Measurement Class support</code>.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
-</li>
+<li id="fn1"><p>In the <code>make menuconfig</code> configuration menus, the option can be found under <code>Device Drivers &gt; USB support &gt; USB Test and   Measurement Class support</code>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
-</div>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
 
-</body>
-</html>
+
+
+</body></html>
