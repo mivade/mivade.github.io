@@ -2,6 +2,7 @@
   {
     "listing": "/blog/index.html",
     "items": [
+      "/blog/make-refactoring-tests-easier.html",
       "/blog/art-with-wayland.html",
       "/blog/sqlalchemy-timestamps.html",
       "/blog/conda-shortcuts.html",
