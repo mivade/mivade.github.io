@@ -3,6 +3,7 @@
     "listing": "/blog/index.html",
     "items": [
       "/blog/til-vscode-options.html",
+      "/blog/custom-backends-for-cachetools.html",
       "/blog/make-refactoring-tests-easier.html",
       "/blog/art-with-wayland.html",
       "/blog/sqlalchemy-timestamps.html",
